@@ -12,6 +12,11 @@ public class Runner {
 			System.out.println(customer.getId()+" "+customer.getFirstName());
 			
 		}
+		
+		Customer billy = new Customer(10L,"Billy","Mays");
+		dao.create(billy);
+		
+		
 	}
 
 }
