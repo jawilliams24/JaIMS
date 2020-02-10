@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.qa.jdbc.Customer;
+import com.qa.domain.Customer;
 
 /**
  * This class is my DAO for the customers table
@@ -24,21 +24,26 @@ public class MysqlCustomerDao implements Dao<Customer> {
 	private String username = "root";
 	private String password = "root";
 
-	public MysqlCustomerDao() throws SQLException {
+	public MysqlCustomerDao() {
 		System.out.println("Connecting database...");
-		this.conn = DriverManager.getConnection(url, username, password); // this code creates the database connection
+		try {
+			this.conn = DriverManager.getConnection(url, username, password);
+			System.out.println("Database connected!");
+		} catch (SQLException e) {
+			e.printStackTrace();
 																		
-		System.out.println("Database connected!");
+		
 	}
-
-	public ArrayList<Customer> getAll() {
+}
+		
+	public ArrayList<Customer> readAll() {
 		ArrayList<Customer> customers = new ArrayList<Customer>();
 		try {
 			Statement smnt = conn.createStatement();
 			ResultSet rs = smnt.executeQuery("SELECT * FROM customers");
 			while (rs.next()) { 										  // while there is a next record, go to it
 				Long id = rs.getLong("customer_id");
-				String firstName = rs.getString("firstName");
+				String firstName = rs.getString("first_name");
 				String surname = rs.getString("surname");
 				Customer customer = new Customer(id, firstName, surname);
 				customers.add(customer); 								  // this adds each customer to the customer list
@@ -87,5 +92,7 @@ public class MysqlCustomerDao implements Dao<Customer> {
 			System.err.println(e.getMessage());
 		}
 	}
+
+
 
 }

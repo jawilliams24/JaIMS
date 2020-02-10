@@ -13,7 +13,7 @@ public interface Dao<T> {
 	
 	public void create(T t);
 	
-	public ArrayList<T> getAll();
+	public ArrayList<T> readAll();
 	
 	public void update(T t);
 	

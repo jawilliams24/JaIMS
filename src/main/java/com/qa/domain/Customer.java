@@ -1,4 +1,4 @@
-package com.qa.jdbc;
+package com.qa.domain;
 
 /**
  * This class is to create Customers for my database
@@ -12,12 +12,16 @@ public class Customer {
 	private String firstName;
 	private String surname;
 	
+	public Customer(String firstName, String surname) {
+		this.firstName = firstName;
+		this.surname = surname;
+	}
+	
 	public Customer(Long id, String firstName, String surname) {
 		this.id=id;
 		this.firstName=firstName;
 		this.surname=surname;
 		
-		// TODO Auto-generated constructor stub
 	}
 	public Long getId() {
 		return id;
@@ -37,7 +41,9 @@ public class Customer {
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
-	
+	public String toString() {
+		return "id:" + id + " first name:" + firstName + " surname:" + surname;
+	}
 	
 	
 }
