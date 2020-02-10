@@ -1,4 +1,4 @@
-package com.qa.jdbc;
+package com.qa.dao;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.qa.jdbc;
+package com.qa.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.qa.jdbc.Customer;
 
 /**
  * This class is my DAO for the customers table
@@ -70,6 +72,7 @@ public class MysqlCustomerDao implements Dao<Customer> {
 		} catch (Exception e) {
 			System.err.println("Got an exception!");
 			System.err.println(e.getMessage());
+			
 		}		
 	}
 

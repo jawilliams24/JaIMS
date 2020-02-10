@@ -3,6 +3,8 @@ package com.qa.jdbc;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.qa.dao.MysqlCustomerDao;
+
 public class Runner {
 
 	public static void main(String[] args) throws SQLException {
