@@ -7,10 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.log4j.Logger;
-
 import com.qa.domain.Customer;
+import com.qa.utils.Config;
 import com.qa.utils.Utilities;
 
 /**
@@ -23,58 +22,74 @@ import com.qa.utils.Utilities;
 public class MysqlCustomerDao implements Dao<Customer> {
 
 	public static final Logger LOGGER = Logger.getLogger(MysqlCustomerDao.class);
-	
+
 	private Connection conn;
-	private String url = "jdbc:mysql://35.204.131.16:3306/inventory_management_sys";
-	private String username = "root";
-	private String password = "Wg04VKLX392CEU";
+	private Statement statement = null;
+	private ResultSet resultSet = null;
 
 	public MysqlCustomerDao() {
-		System.out.println("Connecting database...");
+		LOGGER.info("Connecting database...");
 		try {
-			this.conn = DriverManager.getConnection(url, username, password);
-			System.out.println("Database connected!");
+			this.conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+			LOGGER.info("Database connected!");
 		} catch (SQLException e) {
 			e.printStackTrace();
-
+		} finally {
+			close();
 		}
 	}
-	
-	Customer customerFromResultSet(ResultSet resultSet) throws SQLException {
-		Long id = resultSet.getLong("id");
+
+	Customer customerFromResultSet(ResultSet resultSet) {
+		try {
+		
+		Long id = resultSet.getLong("customer_id");
 		String firstName = resultSet.getString("first_name");
 		String surname = resultSet.getString("surname");
 		return new Customer(id, firstName, surname);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return null;
 	}
+
 	public List<Customer> readAll() {
 		try {
-			Statement smnt = conn.createStatement();
-			ResultSet rs = smnt.executeQuery("SELECT * FROM customers");
+			Statement statement = conn.createStatement();
+			ResultSet resultSet = statement.executeQuery("SELECT * FROM customers");
 
 			Utilities util = new Utilities();
-			String customerResults = util.resultSet_toString(rs);
+			String customerResults = util.resultSet_toString(resultSet);
 			System.out.println(customerResults);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
+		finally {
+			close();
+		}
 		return new ArrayList<>();
 	}
 
 	public Customer readLatest() {
 		try {
 			Statement statement = conn.createStatement();
-			ResultSet resultSet = statement.executeQuery("SELECT FROM customers ORDER BY id DESC LIMIT 1");
+			ResultSet resultSet = statement.executeQuery("SELECT * FROM customers ORDER BY customer_id DESC LIMIT 1");
 			resultSet.next();
 			return customerFromResultSet(resultSet);
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
 		}
+
+		finally {
+			close();
+		}
 		return null;
 	}
-	
+
 	public Customer create(Customer customer) {
 		try {
 			Statement statement = conn.createStatement();
@@ -85,47 +100,80 @@ public class MysqlCustomerDao implements Dao<Customer> {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
 		}
+
+		finally {
+			close();
+		}
+
 		return null;
 	}
 
 	public Customer readCustomer(Long id) {
-		try	 {
+		try {
 			Statement statement = conn.createStatement();
-			ResultSet resultSet = statement.executeQuery("SELECT FROM customers where id = "+id);
+			ResultSet resultSet = statement.executeQuery("SELECT * FROM customers where customer_id = " + id);
 			resultSet.next();
 			return customerFromResultSet(resultSet);
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
 		}
-		return null;
-	}
-	
-	public Customer update(Customer t) {
-		try {
 
-			Statement smnt = conn.createStatement();
-			smnt.executeUpdate("UPDATE customers SET customer_name= where customer_name=;");
-			conn.close();
-
-		} catch (Exception e) {
-			System.err.println("Got an exception!");
-			System.err.println(e.getMessage());
-
+		finally {
+			close();
 		}
+
 		return null;
 	}
-	@Override
-	
 
-	public void delete(long id) {
-		try  {
+	public Customer update(Customer customer) {
+		try {
 			Statement statement = conn.createStatement();
-			statement.executeUpdate("delete from customers where id = " + id);
+			statement.executeUpdate("UPDATE customers SET first_name ='" + customer.getFirstName() + "', surname ='"
+					+ customer.getSurname() + "' WHERE customer_id =" + customer.getId() + ";");
+			return readCustomer(customer.getId());
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
 		}
+
+		finally {
+			close();
+		}
+
+		return null;
+	}
+
+	public void delete(long id) {
+		try {
+			Statement statement = conn.createStatement();
+			statement.executeUpdate("DELETE FROM customers WHERE customer_id = " + id);
+		} catch (Exception e) {
+			LOGGER.debug(e.getStackTrace());
+			LOGGER.error(e.getMessage());
+		}
+
+		finally {
+			close();
+		}
+
+	}
+
+	public void close() {
+		try {
+			if (statement != null)
+				statement.close();
+		} catch (SQLException se2) {
+			se2.printStackTrace();
+		}
+		try {
+			if (resultSet != null)
+
+				resultSet.close();
+		} catch (SQLException se) {
+			se.printStackTrace();
+		}
+
 	}
 
 }

@@ -1,13 +1,18 @@
 package com.qa.jdbc;
 
+import java.sql.SQLException;
+
 import org.apache.log4j.Logger;
 
 import com.qa.controller.Action;
 import com.qa.controller.CrudController;
 import com.qa.controller.CustomerController;
+import com.qa.controller.ItemController;
 import com.qa.dao.MysqlCustomerDao;
+import com.qa.dao.MysqlItemDao;
 import com.qa.domain.Domain;
 import com.qa.services.CustomerServices;
+import com.qa.services.ItemServices;
 import com.qa.utils.Config;
 import com.qa.utils.Utilities;
 
@@ -44,7 +49,8 @@ public class Ims {
 			CustomerController customerController = new CustomerController(new CustomerServices(new MysqlCustomerDao()));
 			doAction(customerController, action);
 		case ITEM:
-			break;
+			ItemController itemController = new ItemController(new ItemServices(new MysqlItemDao()));
+			doAction(itemController, action);
 		case ORDER:
 			break;
 		case STOP:

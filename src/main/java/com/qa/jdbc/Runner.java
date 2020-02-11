@@ -1,5 +1,7 @@
 package com.qa.jdbc;
 
+import java.sql.SQLException;
+
 import org.apache.log4j.Logger;
 
 /**
