@@ -60,7 +60,7 @@ public class MysqlItemDao implements Dao<Item> {
 			this.conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
 			LOGGER.info("Database connected!");
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.debug(e.getStackTrace());
 		} finally {
 			close();
 		}
@@ -75,7 +75,7 @@ public class MysqlItemDao implements Dao<Item> {
 		Long itemQuantity = resultSet.getLong("item_quantity");
 		return new Item(itemId, itemName, itemValue, itemQuantity);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.debug(e.getStackTrace());
 		} finally {
 			close();
 		}
@@ -92,7 +92,7 @@ public class MysqlItemDao implements Dao<Item> {
 			System.out.println(itemResults);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOGGER.debug(e.getStackTrace());
 		}
 
 		finally {
@@ -192,14 +192,14 @@ public class MysqlItemDao implements Dao<Item> {
 			if (statement != null)
 				statement.close();
 		} catch (SQLException se2) {
-			se2.printStackTrace();
+			LOGGER.debug(se2.getStackTrace());
 		}
 		try {
 			if (resultSet != null)
 
 				resultSet.close();
 		} catch (SQLException se) {
-			se.printStackTrace();
+			LOGGER.debug(se.getStackTrace());
 		}
 
 	}
