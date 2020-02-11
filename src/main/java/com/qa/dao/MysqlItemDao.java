@@ -84,8 +84,8 @@ public class MysqlItemDao implements Dao<Item> {
 
 	public List<Item> readAll() {
 		try {
-			Statement statement = conn.createStatement();
-			ResultSet resultSet = statement.executeQuery("SELECT * FROM items");
+			statement = conn.createStatement();
+			resultSet = statement.executeQuery("SELECT * FROM items");
 
 			Utilities util = new Utilities();
 			String itemResults = util.resultSet_toString(resultSet);
@@ -103,8 +103,8 @@ public class MysqlItemDao implements Dao<Item> {
 
 	public Item readLatest() {
 		try {
-			Statement statement = conn.createStatement();
-			ResultSet resultSet = statement.executeQuery("SELECT * FROM items ORDER BY item_id DESC LIMIT 1");
+			statement = conn.createStatement();
+			resultSet = statement.executeQuery("SELECT * FROM items ORDER BY item_id DESC LIMIT 1");
 			resultSet.next();
 			return itemFromResultSet(resultSet);
 		} catch (Exception e) {
@@ -120,7 +120,7 @@ public class MysqlItemDao implements Dao<Item> {
 
 	public Item create(Item item) {
 		try {
-			Statement statement = conn.createStatement();
+			statement = conn.createStatement();
 			statement.executeUpdate("INSERT INTO items(item_name, item_value, item_quantity) VALUES('" + item.getItemName()
 					+ "','" + item.getItemValue() + "','" + item.getItemQuantity() + "');");
 			return readLatest();
@@ -138,8 +138,8 @@ public class MysqlItemDao implements Dao<Item> {
 
 	public Item readItem(Long itemId) {
 		try {
-			Statement statement = conn.createStatement();
-			ResultSet resultSet = statement.executeQuery("SELECT * FROM items where item_id = " + itemId);
+			statement = conn.createStatement();
+			resultSet = statement.executeQuery("SELECT * FROM items where item_id = " + itemId);
 			resultSet.next();
 			return itemFromResultSet(resultSet);
 		} catch (Exception e) {
@@ -156,7 +156,7 @@ public class MysqlItemDao implements Dao<Item> {
 
 	public Item update(Item item) {
 		try {
-			Statement statement = conn.createStatement();
+			statement = conn.createStatement();
 			statement.executeUpdate("UPDATE items SET item_name ='" + item.getItemName() + "', item_value ="
 					+ item.getItemValue() + ", item_quantity =" + item.getItemQuantity() + " WHERE item_id =" + item.getItemId() + ";");
 			return readItem(item.getItemId());
@@ -174,7 +174,7 @@ public class MysqlItemDao implements Dao<Item> {
 
 	public void delete(long itemId) {
 		try {
-			Statement statement = conn.createStatement();
+			statement = conn.createStatement();
 			statement.executeUpdate("DELETE FROM items WHERE item_id = " + itemId);
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());

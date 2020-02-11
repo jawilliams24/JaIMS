@@ -56,8 +56,8 @@ public class MysqlCustomerDao implements Dao<Customer> {
 
 	public List<Customer> readAll() {
 		try {
-			Statement statement = conn.createStatement();
-			ResultSet resultSet = statement.executeQuery("SELECT * FROM customers");
+			statement = conn.createStatement();
+			resultSet = statement.executeQuery("SELECT * FROM customers");
 
 			Utilities util = new Utilities();
 			String customerResults = util.resultSet_toString(resultSet);
@@ -75,8 +75,8 @@ public class MysqlCustomerDao implements Dao<Customer> {
 
 	public Customer readLatest() {
 		try {
-			Statement statement = conn.createStatement();
-			ResultSet resultSet = statement.executeQuery("SELECT * FROM customers ORDER BY customer_id DESC LIMIT 1");
+			statement = conn.createStatement();
+			resultSet = statement.executeQuery("SELECT * FROM customers ORDER BY customer_id DESC LIMIT 1");
 			resultSet.next();
 			return customerFromResultSet(resultSet);
 		} catch (Exception e) {
@@ -92,7 +92,7 @@ public class MysqlCustomerDao implements Dao<Customer> {
 
 	public Customer create(Customer customer) {
 		try {
-			Statement statement = conn.createStatement();
+			statement = conn.createStatement();
 			statement.executeUpdate("INSERT INTO customers(first_name, surname) VALUES('" + customer.getFirstName()
 					+ "','" + customer.getSurname() + "');");
 			return readLatest();
@@ -110,8 +110,8 @@ public class MysqlCustomerDao implements Dao<Customer> {
 
 	public Customer readCustomer(Long id) {
 		try {
-			Statement statement = conn.createStatement();
-			ResultSet resultSet = statement.executeQuery("SELECT * FROM customers where customer_id = " + id);
+			statement = conn.createStatement();
+			resultSet = statement.executeQuery("SELECT * FROM customers where customer_id = " + id);
 			resultSet.next();
 			return customerFromResultSet(resultSet);
 		} catch (Exception e) {
@@ -128,7 +128,7 @@ public class MysqlCustomerDao implements Dao<Customer> {
 
 	public Customer update(Customer customer) {
 		try {
-			Statement statement = conn.createStatement();
+			statement = conn.createStatement();
 			statement.executeUpdate("UPDATE customers SET first_name ='" + customer.getFirstName() + "', surname ='"
 					+ customer.getSurname() + "' WHERE customer_id =" + customer.getId() + ";");
 			return readCustomer(customer.getId());
@@ -146,7 +146,7 @@ public class MysqlCustomerDao implements Dao<Customer> {
 
 	public void delete(long id) {
 		try {
-			Statement statement = conn.createStatement();
+			statement = conn.createStatement();
 			statement.executeUpdate("DELETE FROM customers WHERE customer_id = " + id);
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
