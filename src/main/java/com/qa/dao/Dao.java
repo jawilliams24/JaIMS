@@ -1,6 +1,6 @@
 package com.qa.dao;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class is my Database Access Object
@@ -11,12 +11,12 @@ import java.util.ArrayList;
 
 public interface Dao<T> {
 	
-	public void create(T t);
+	public T create(T t);
 	
-	public ArrayList<T> readAll();
+	public List<T> readAll();
 	
-	public void update(T t);
+	public T update(T t);
 	
-	public void delete(int id);
+	public void delete(long id);
 	
 }

@@ -11,6 +11,15 @@ import com.qa.services.CustomerServices;
 import com.qa.utils.Config;
 import com.qa.utils.Utilities;
 
+/**
+ * This is my IMS class, which provides the "door", so to speak to the IMS.
+ * This class allows a user to log in with a username and password of their choosing,
+ * and then runs other methods depending on user choice.
+ * 
+ * @author James Williams
+ *
+ */
+
 public class Ims {
 	
 	public static final Logger LOGGER = Logger.getLogger(Ims.class);

@@ -2,6 +2,14 @@ package com.qa.jdbc;
 
 import org.apache.log4j.Logger;
 
+/**
+ * This is the Runner class for my IMS project for QA Consulting.
+ * This class simply initialises the IMS.
+ * 
+ * @author James Williams
+ *
+ */
+
 public class Runner {
 
 	public static final Logger LOGGER = Logger.getLogger(Runner.class);
