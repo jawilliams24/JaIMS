@@ -33,7 +33,7 @@ public class MysqlCustomerDao implements Dao<Customer> {
 			this.conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
 			LOGGER.info("Database connected!");
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.debug(e.getStackTrace());
 		} finally {
 			close();
 		}
@@ -47,7 +47,7 @@ public class MysqlCustomerDao implements Dao<Customer> {
 		String surname = resultSet.getString("surname");
 		return new Customer(id, firstName, surname);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.debug(e.getStackTrace());
 		} finally {
 			close();
 		}
@@ -64,7 +64,7 @@ public class MysqlCustomerDao implements Dao<Customer> {
 			System.out.println(customerResults);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOGGER.debug(e.getStackTrace());
 		}
 
 		finally {
@@ -164,14 +164,14 @@ public class MysqlCustomerDao implements Dao<Customer> {
 			if (statement != null)
 				statement.close();
 		} catch (SQLException se2) {
-			se2.printStackTrace();
+			LOGGER.debug(se2.getStackTrace());
 		}
 		try {
 			if (resultSet != null)
 
 				resultSet.close();
 		} catch (SQLException se) {
-			se.printStackTrace();
+			LOGGER.debug(se.getStackTrace());
 		}
 
 	}
