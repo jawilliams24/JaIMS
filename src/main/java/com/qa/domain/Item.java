@@ -1,7 +1,7 @@
 package com.qa.domain;
 
 /**
- * This class is to create Customers for my database
+ * This class is to create Items for my database
  * 
  * @author James Williams
  *

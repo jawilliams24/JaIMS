@@ -20,18 +20,22 @@ public class ItemServices implements CrudServices<Item> {
 		this.itemDao = itemDao;
 	}
 	
+	@Override
 	public List<Item> readAll() {
 		return itemDao.readAll();
 	}
 
+	@Override
 	public Item create(Item item) {
 		return itemDao.create(item);
 	}
 
+	@Override
 	public Item update(Item item) {
 		return itemDao.update(item);
 	}
 
+	@Override
 	public void delete(Long id) {
 		itemDao.delete(id);
 	}
