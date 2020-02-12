@@ -12,6 +12,32 @@ import com.qa.domain.Item;
 import com.qa.utils.Config;
 import com.qa.utils.Utilities;
 
+///**
+// * This class is my DAO for the Items table
+// * @author James Williams
+// *
+// */
+//
+//public class MysqlItemDao implements Dao<Item> {
+//
+//	public void create(Item t) {
+//		
+//	}
+//
+//	public ArrayList<Item> read() {
+//		return null;
+//	}
+//
+//	public void update(Item t) {
+//		
+//	}
+//
+//	public void delete(int id) {
+//		
+//	}
+//
+//}
+
 
 /**
  * This class is my DAO for the customers table
