@@ -8,6 +8,14 @@ import com.qa.domain.Item;
 import com.qa.services.CrudServices;
 import com.qa.utils.Utilities;
 
+/**
+ * This class interacts with the user to give them instructions and then feeds
+ * back to them once they have completed their actions.
+ * 
+ * @author James Williams
+ *
+ */
+
 public class ItemController implements CrudController<Item>{
 
 	public static final Logger LOGGER = Logger.getLogger(ItemController.class);

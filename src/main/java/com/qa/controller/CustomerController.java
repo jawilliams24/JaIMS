@@ -8,23 +8,31 @@ import com.qa.domain.Customer;
 import com.qa.services.CrudServices;
 import com.qa.utils.Utilities;
 
-public class CustomerController implements CrudController<Customer>{
+/**
+ * This class interacts with the user to give them instructions and then feeds
+ * back to them once they have completed their actions.
+ * 
+ * @author James Williams
+ *
+ */
+
+public class CustomerController implements CrudController<Customer> {
 
 	public static final Logger LOGGER = Logger.getLogger(CustomerController.class);
-	
+
 	private CrudServices<Customer> customerService;
-	
+
 	public CustomerController(CrudServices<Customer> customerService) {
 		this.customerService = customerService;
 	}
-	
+
 	String getInput() {
 		return Utilities.getInput();
 	}
-	
+
 	public List<Customer> readAll() {
 		List<Customer> customers = customerService.readAll();
-		for(Customer customer: customers) {
+		for (Customer customer : customers) {
 			LOGGER.info(customer.toString());
 		}
 		return customers;
@@ -57,5 +65,5 @@ public class CustomerController implements CrudController<Customer>{
 		Long id = Long.valueOf(getInput());
 		customerService.delete(id);
 	}
-	
+
 }
