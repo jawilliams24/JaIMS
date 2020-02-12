@@ -37,6 +37,12 @@ public enum Action {
 		}
 	}
 
+	/**
+	 * This enum runs the getAction method to allow the user
+	 * to choose which action they want to take.
+	 * @return
+	 */
+	
 	public static Action getAction() {
 		Action action;
 		while (true) {

@@ -5,6 +5,13 @@ import java.util.List;
 import com.qa.dao.Dao;
 import com.qa.domain.Customer;
 
+/**
+ * This class runs the methods listed below to allow the user
+ * to interact with the database's customers table.
+ * @author James Williams
+ *
+ */
+
 public class CustomerServices implements CrudServices<Customer> {
 
 	Dao<Customer> customerDao;
