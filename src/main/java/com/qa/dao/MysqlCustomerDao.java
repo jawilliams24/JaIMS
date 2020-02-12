@@ -27,6 +27,10 @@ public class MysqlCustomerDao implements Dao<Customer> {
 	private Statement statement = null;
 	private ResultSet resultSet = null;
 
+	/**
+	 * Connects the program to the database.
+	 */
+	
 	public MysqlCustomerDao() {
 		LOGGER.info("Connecting database...");
 		try {
@@ -39,6 +43,12 @@ public class MysqlCustomerDao implements Dao<Customer> {
 		}
 	}
 
+	/**
+	 * Converts the returns the resultSet as a customer.
+	 * @param resultSet
+	 * 
+	 */
+	
 	Customer customerFromResultSet(ResultSet resultSet) {
 		try {
 		
@@ -54,6 +64,10 @@ public class MysqlCustomerDao implements Dao<Customer> {
 		return null;
 	}
 
+	/**
+	 * Reads all customers from the database.
+	 */
+	
 	public List<Customer> readAll() {
 		try {
 			statement = conn.createStatement();
@@ -73,6 +87,11 @@ public class MysqlCustomerDao implements Dao<Customer> {
 		return new ArrayList<>();
 	}
 
+	/**
+	 * Reads the latest customer from the database. 
+	 * 
+	 */
+	
 	public Customer readLatest() {
 		try {
 			statement = conn.createStatement();
@@ -90,6 +109,10 @@ public class MysqlCustomerDao implements Dao<Customer> {
 		return null;
 	}
 
+	/**
+	 * Allows the user to create a customer, ignoring ID since that is auto-incremented.
+	 */
+	
 	public Customer create(Customer customer) {
 		try {
 			statement = conn.createStatement();
@@ -108,6 +131,12 @@ public class MysqlCustomerDao implements Dao<Customer> {
 		return null;
 	}
 
+	/**
+	 * Allows the user to read a customer from the database.
+	 * @param id
+	 * 
+	 */
+	
 	public Customer readCustomer(Long id) {
 		try {
 			statement = conn.createStatement();
@@ -126,6 +155,10 @@ public class MysqlCustomerDao implements Dao<Customer> {
 		return null;
 	}
 
+	/**
+	 * Enables the UPDATE customer functionality.
+	 */
+	
 	public Customer update(Customer customer) {
 		try {
 			statement = conn.createStatement();
@@ -144,6 +177,10 @@ public class MysqlCustomerDao implements Dao<Customer> {
 		return null;
 	}
 
+	/**
+	 * Enables the DELETE customer functionality.
+	 */
+	
 	public void delete(long id) {
 		try {
 			statement = conn.createStatement();
@@ -159,6 +196,10 @@ public class MysqlCustomerDao implements Dao<Customer> {
 
 	}
 
+	/**
+	 * Really useful close method to automatically close the connection when finished.
+	 */
+	
 	public void close() {
 		try {
 			if (statement != null)

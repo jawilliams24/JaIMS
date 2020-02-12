@@ -26,6 +26,10 @@ public class MysqlItemDao implements Dao<Item> {
 	private Statement statement = null;
 	private ResultSet resultSet = null;
 
+	/**
+	 * Connects the program to the database.
+	 */
+	
 	public MysqlItemDao() {
 		LOGGER.info("Connecting database...");
 		try {
@@ -38,6 +42,12 @@ public class MysqlItemDao implements Dao<Item> {
 		}
 	}
 
+	/**
+	 * Converts the returns the resultSet as an item.
+	 * @param resultSet
+	 * 
+	 */
+	
 	Item itemFromResultSet(ResultSet resultSet) {
 		try {
 		
@@ -54,6 +64,10 @@ public class MysqlItemDao implements Dao<Item> {
 		return null;
 	}
 
+	/**
+	 * Reads all items from the database.
+	 */
+	
 	public List<Item> readAll() {
 		try {
 			statement = conn.createStatement();
@@ -73,6 +87,11 @@ public class MysqlItemDao implements Dao<Item> {
 		return new ArrayList<>();
 	}
 
+	/**
+	 * Reads the latest item from the database. 
+	 * 
+	 */
+	
 	public Item readLatest() {
 		try {
 			statement = conn.createStatement();
@@ -90,6 +109,10 @@ public class MysqlItemDao implements Dao<Item> {
 		return null;
 	}
 
+	/**
+	 * Allows the user to create an item, ignoring ID since that is auto-incremented.
+	 */
+	
 	public Item create(Item item) {
 		try {
 			statement = conn.createStatement();
@@ -108,6 +131,12 @@ public class MysqlItemDao implements Dao<Item> {
 		return null;
 	}
 
+	/**
+	 * Allows the user to read an item from the database.
+	 * @param itemId
+	 * 
+	 */
+	
 	public Item readItem(Long itemId) {
 		try {
 			statement = conn.createStatement();
@@ -126,6 +155,10 @@ public class MysqlItemDao implements Dao<Item> {
 		return null;
 	}
 
+	/**
+	 * Enables the UPDATE item functionality.
+	 */
+	
 	public Item update(Item item) {
 		try {
 			statement = conn.createStatement();
@@ -144,6 +177,10 @@ public class MysqlItemDao implements Dao<Item> {
 		return null;
 	}
 
+	/**
+	 * Enables the DELETE item functionality.
+	 */
+	
 	public void delete(long itemId) {
 		try {
 			statement = conn.createStatement();
@@ -159,6 +196,10 @@ public class MysqlItemDao implements Dao<Item> {
 
 	}
 
+	/**
+	 * Useful close method to automatically close the connection when finished.
+	 */
+	
 	public void close() {
 		try {
 			if (statement != null)
