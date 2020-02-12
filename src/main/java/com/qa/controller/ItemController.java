@@ -43,9 +43,7 @@ public class ItemController implements CrudController<Item>{
 		String itemName = getInput();
 		LOGGER.info("Please enter a item value");
 		float itemValue = Float.parseFloat(getInput());
-		LOGGER.info("Please enter a item quantity");
-		Long itemQuantity = Long.parseLong(getInput());
-		Item item = itemService.create(new Item(itemName, itemValue, itemQuantity));
+		Item item = itemService.create(new Item(itemName, itemValue));
 		LOGGER.info("Item created");
 		return item;
 	}
@@ -57,9 +55,7 @@ public class ItemController implements CrudController<Item>{
 		String itemName = getInput();
 		LOGGER.info("Please enter a item value");
 		float itemValue = Float.parseFloat(getInput());
-		LOGGER.info("Please enter a item quantity");
-		Long itemQuantity = Long.parseLong(getInput());
-		Item item = itemService.update(new Item(itemId, itemName, itemValue, itemQuantity));
+		Item item = itemService.update(new Item(itemId, itemName, itemValue));
 		LOGGER.info("Item updated");
 		return item;
 	}
