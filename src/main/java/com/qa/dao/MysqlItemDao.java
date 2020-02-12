@@ -17,34 +17,6 @@ import com.qa.utils.Utilities;
 // * @author James Williams
 // *
 // */
-//
-//public class MysqlItemDao implements Dao<Item> {
-//
-//	public void create(Item t) {
-//		
-//	}
-//
-//	public ArrayList<Item> read() {
-//		return null;
-//	}
-//
-//	public void update(Item t) {
-//		
-//	}
-//
-//	public void delete(int id) {
-//		
-//	}
-//
-//}
-
-
-/**
- * This class is my DAO for the customers table
- * 
- * @author James Williams
- *
- */
 
 public class MysqlItemDao implements Dao<Item> {
 
