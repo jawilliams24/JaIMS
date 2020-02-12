@@ -4,6 +4,13 @@ import org.apache.log4j.Logger;
 
 import com.qa.utils.Utilities;
 
+/**
+ * This enum is for the Domain, which asks the user which entity they'd like
+ * to interact with.
+ * @author James Williams
+ *
+ */
+
 public enum Domain {
 
 	CUSTOMER("Information about customers"),

@@ -14,12 +14,27 @@ public class Item {
 	private Long itemQuantity;
 	private float itemValue;
 
+	/**
+	 * Constructor for creating new items.
+	 * @param itemName
+	 * @param itemValue
+	 * @param itemQuantity
+	 */
+	
 	public Item(String itemName, float itemValue, Long itemQuantity) {
 		this.itemName = itemName;
 		this.itemQuantity = itemQuantity;
 		this.itemValue = itemValue;
 	}
 
+	/**
+	 * Constructor for reading items.
+	 * @param itemId
+	 * @param itemName
+	 * @param itemValue
+	 * @param itemQuantity
+	 */
+	
 	public Item(Long itemId, String itemName, float itemValue, Long itemQuantity) {
 		this.itemId = itemId;
 		this.itemName = itemName;
@@ -27,6 +42,11 @@ public class Item {
 		this.itemValue = itemValue;
 	}
 
+	/**
+	 * Getters and Setters for Item parameters.
+	 * 
+	 */
+	
 
 	public Long getItemId() {
 		return itemId;
