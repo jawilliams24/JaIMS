@@ -75,7 +75,7 @@ public class MysqlOrderDao implements Dao<Order> {
 
 			Utilities util = new Utilities();
 			String orderResults = util.resultSet_toString(resultSet);
-			System.out.println(orderResults);
+			LOGGER.info(orderResults);
 
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());

@@ -74,7 +74,7 @@ public class MysqlItemDao implements Dao<Item> {
 
 			Utilities util = new Utilities();
 			String itemResults = util.resultSet_toString(resultSet);
-			System.out.println(itemResults);
+			LOGGER.info(itemResults);
 
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
@@ -208,7 +208,6 @@ public class MysqlItemDao implements Dao<Item> {
 		}
 		try {
 			if (resultSet != null)
-
 				resultSet.close();
 		} catch (SQLException se) {
 			LOGGER.debug(se.getStackTrace());

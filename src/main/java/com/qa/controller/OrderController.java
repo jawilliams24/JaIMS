@@ -61,7 +61,7 @@ public class OrderController implements CrudController<Order>{
 		Long customerId = Long.parseLong(getInput());
 		LOGGER.info("Please enter a discount");
 		Long discount = Long.parseLong(getInput());
-		Order order = orderService.update(new Order(customerId, orderCost, customerId, discount));
+		Order order = orderService.update(new Order(orderId, orderCost, customerId, discount));
 		LOGGER.info("Order updated");
 		return order;
 	}
