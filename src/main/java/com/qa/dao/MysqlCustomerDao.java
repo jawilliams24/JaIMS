@@ -75,7 +75,7 @@ public class MysqlCustomerDao implements Dao<Customer> {
 
 			Utilities util = new Utilities();
 			String customerResults = util.resultSet_toString(resultSet);
-			System.out.println(customerResults);
+			LOGGER.info(customerResults);
 
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
