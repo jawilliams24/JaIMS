@@ -208,7 +208,6 @@ public class MysqlItemDao implements Dao<Item> {
 		}
 		try {
 			if (resultSet != null)
-
 				resultSet.close();
 		} catch (SQLException se) {
 			LOGGER.debug(se.getStackTrace());
