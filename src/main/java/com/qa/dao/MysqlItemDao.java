@@ -54,8 +54,7 @@ public class MysqlItemDao implements Dao<Item> {
 		Long itemId = resultSet.getLong("item_id");
 		String itemName = resultSet.getString("item_name");
 		Long itemValue = resultSet.getLong("item_value");
-		Long itemQuantity = resultSet.getLong("item_quantity");
-		return new Item(itemId, itemName, itemValue, itemQuantity);
+		return new Item(itemId, itemName, itemValue);
 		} catch (SQLException e) {
 			LOGGER.debug(e.getStackTrace());
 		} finally {
@@ -116,8 +115,8 @@ public class MysqlItemDao implements Dao<Item> {
 	public Item create(Item item) {
 		try {
 			statement = conn.createStatement();
-			statement.executeUpdate("INSERT INTO items(item_name, item_value, item_quantity) VALUES('" + item.getItemName()
-					+ "','" + item.getItemValue() + "','" + item.getItemQuantity() + "');");
+			statement.executeUpdate("INSERT INTO items(item_name, item_value) VALUES('" + item.getItemName()
+					+ "'," + item.getItemValue() + ");");
 			return readLatest();
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
@@ -163,7 +162,7 @@ public class MysqlItemDao implements Dao<Item> {
 		try {
 			statement = conn.createStatement();
 			statement.executeUpdate("UPDATE items SET item_name ='" + item.getItemName() + "', item_value ="
-					+ item.getItemValue() + ", item_quantity =" + item.getItemQuantity() + " WHERE item_id =" + item.getItemId() + ";");
+					+ item.getItemValue() + " WHERE item_id =" + item.getItemId() + ";");
 			return readItem(item.getItemId());
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());

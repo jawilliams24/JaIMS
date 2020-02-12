@@ -923,3 +923,353 @@
 2020-02-12 11:42:48 INFO  Domain:35 - ITEM: Individual Items
 2020-02-12 11:42:48 INFO  Domain:35 - ORDER: Purchases of items
 2020-02-12 11:42:48 INFO  Domain:35 - STOP: To close the application
+2020-02-12 12:46:29 INFO  Ims:34 - What is your username
+2020-02-12 12:46:31 INFO  Ims:36 - What is your password
+2020-02-12 12:46:35 INFO  Ims:42 - Which entity would you like to use?
+2020-02-12 12:46:35 INFO  Domain:35 - CUSTOMER: Information about customers
+2020-02-12 12:46:35 INFO  Domain:35 - ITEM: Individual Items
+2020-02-12 12:46:35 INFO  Domain:35 - ORDER: Purchases of items
+2020-02-12 12:46:35 INFO  Domain:35 - STOP: To close the application
+2020-02-12 12:46:38 INFO  Ims:49 - What would you like to do with item:
+2020-02-12 12:46:38 INFO  Action:36 - CREATE: To save a new item into the database
+2020-02-12 12:46:38 INFO  Action:36 - READ: To read an item from the database
+2020-02-12 12:46:38 INFO  Action:36 - UPDATE: To change an item already in the database
+2020-02-12 12:46:38 INFO  Action:36 - DELETE: To remove an item from the database
+2020-02-12 12:46:38 INFO  Action:36 - RETURN: To return to domain selection
+2020-02-12 12:46:39 INFO  MysqlItemDao:34 - Connecting database...
+2020-02-12 12:46:40 INFO  MysqlItemDao:37 - Database connected!
+2020-02-12 12:46:40 INFO  ItemController:42 - Please enter a item name
+2020-02-12 12:46:42 INFO  ItemController:44 - Please enter a item value
+2020-02-12 12:46:45 INFO  ItemController:46 - Please enter a item quantity
+2020-02-12 12:46:46 INFO  ItemController:49 - Item created
+2020-02-12 12:46:46 INFO  Ims:42 - Which entity would you like to use?
+2020-02-12 12:46:46 INFO  Domain:35 - CUSTOMER: Information about customers
+2020-02-12 12:46:46 INFO  Domain:35 - ITEM: Individual Items
+2020-02-12 12:46:46 INFO  Domain:35 - ORDER: Purchases of items
+2020-02-12 12:46:46 INFO  Domain:35 - STOP: To close the application
+2020-02-12 12:46:49 INFO  Ims:49 - What would you like to do with item:
+2020-02-12 12:46:49 INFO  Action:36 - CREATE: To save a new item into the database
+2020-02-12 12:46:49 INFO  Action:36 - READ: To read an item from the database
+2020-02-12 12:46:49 INFO  Action:36 - UPDATE: To change an item already in the database
+2020-02-12 12:46:49 INFO  Action:36 - DELETE: To remove an item from the database
+2020-02-12 12:46:49 INFO  Action:36 - RETURN: To return to domain selection
+2020-02-12 12:46:50 INFO  MysqlItemDao:34 - Connecting database...
+2020-02-12 12:46:51 INFO  MysqlItemDao:37 - Database connected!
+2020-02-12 12:46:51 INFO  Ims:42 - Which entity would you like to use?
+2020-02-12 12:46:51 INFO  Domain:35 - CUSTOMER: Information about customers
+2020-02-12 12:46:51 INFO  Domain:35 - ITEM: Individual Items
+2020-02-12 12:46:51 INFO  Domain:35 - ORDER: Purchases of items
+2020-02-12 12:46:51 INFO  Domain:35 - STOP: To close the application
+2020-02-12 12:52:34 INFO  Ims:34 - What is your username
+2020-02-12 12:53:19 INFO  Ims:34 - What is your username
+2020-02-12 12:53:21 INFO  Ims:36 - What is your password
+2020-02-12 12:53:23 INFO  Ims:42 - Which entity would you like to use?
+2020-02-12 12:53:23 INFO  Domain:35 - CUSTOMER: Information about customers
+2020-02-12 12:53:23 INFO  Domain:35 - ITEM: Individual Items
+2020-02-12 12:53:23 INFO  Domain:35 - ORDER: Purchases of items
+2020-02-12 12:53:23 INFO  Domain:35 - STOP: To close the application
+2020-02-12 12:53:25 INFO  Ims:49 - What would you like to do with item:
+2020-02-12 12:53:25 INFO  Action:36 - CREATE: To save a new item into the database
+2020-02-12 12:53:25 INFO  Action:36 - READ: To read an item from the database
+2020-02-12 12:53:25 INFO  Action:36 - UPDATE: To change an item already in the database
+2020-02-12 12:53:25 INFO  Action:36 - DELETE: To remove an item from the database
+2020-02-12 12:53:25 INFO  Action:36 - RETURN: To return to domain selection
+2020-02-12 12:53:27 INFO  MysqlItemDao:34 - Connecting database...
+2020-02-12 12:53:27 INFO  MysqlItemDao:37 - Database connected!
+2020-02-12 12:53:27 INFO  ItemController:42 - Please enter a item name
+2020-02-12 12:53:33 INFO  ItemController:44 - Please enter a item value
+2020-02-12 12:53:35 ERROR MysqlItemDao:123 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''14.0)' at line 1
+2020-02-12 12:53:35 INFO  ItemController:47 - Item created
+2020-02-12 12:53:35 INFO  Ims:42 - Which entity would you like to use?
+2020-02-12 12:53:35 INFO  Domain:35 - CUSTOMER: Information about customers
+2020-02-12 12:53:35 INFO  Domain:35 - ITEM: Individual Items
+2020-02-12 12:53:35 INFO  Domain:35 - ORDER: Purchases of items
+2020-02-12 12:53:35 INFO  Domain:35 - STOP: To close the application
+2020-02-12 12:54:12 INFO  Ims:34 - What is your username
+2020-02-12 12:54:15 INFO  Ims:36 - What is your password
+2020-02-12 12:54:17 INFO  Ims:42 - Which entity would you like to use?
+2020-02-12 12:54:17 INFO  Domain:35 - CUSTOMER: Information about customers
+2020-02-12 12:54:17 INFO  Domain:35 - ITEM: Individual Items
+2020-02-12 12:54:17 INFO  Domain:35 - ORDER: Purchases of items
+2020-02-12 12:54:17 INFO  Domain:35 - STOP: To close the application
+2020-02-12 12:54:19 INFO  Ims:49 - What would you like to do with item:
+2020-02-12 12:54:19 INFO  Action:36 - CREATE: To save a new item into the database
+2020-02-12 12:54:19 INFO  Action:36 - READ: To read an item from the database
+2020-02-12 12:54:19 INFO  Action:36 - UPDATE: To change an item already in the database
+2020-02-12 12:54:19 INFO  Action:36 - DELETE: To remove an item from the database
+2020-02-12 12:54:19 INFO  Action:36 - RETURN: To return to domain selection
+2020-02-12 12:54:20 INFO  MysqlItemDao:34 - Connecting database...
+2020-02-12 12:54:21 INFO  MysqlItemDao:37 - Database connected!
+2020-02-12 12:54:21 INFO  ItemController:42 - Please enter a item name
+2020-02-12 12:54:22 INFO  ItemController:44 - Please enter a item value
+2020-02-12 12:54:24 INFO  ItemController:47 - Item created
+2020-02-12 12:54:24 INFO  Ims:42 - Which entity would you like to use?
+2020-02-12 12:54:24 INFO  Domain:35 - CUSTOMER: Information about customers
+2020-02-12 12:54:24 INFO  Domain:35 - ITEM: Individual Items
+2020-02-12 12:54:24 INFO  Domain:35 - ORDER: Purchases of items
+2020-02-12 12:54:24 INFO  Domain:35 - STOP: To close the application
+2020-02-12 14:00:45 INFO  Ims:37 - What is your username
+2020-02-12 14:00:47 INFO  Ims:39 - What is your password
+2020-02-12 14:00:49 INFO  Ims:45 - Which entity would you like to use?
+2020-02-12 14:00:49 INFO  Domain:35 - CUSTOMER: Information about customers
+2020-02-12 14:00:49 INFO  Domain:35 - ITEM: Individual Items
+2020-02-12 14:00:49 INFO  Domain:35 - ORDER: Purchases of items
+2020-02-12 14:00:49 INFO  Domain:35 - STOP: To close the application
+2020-02-12 14:00:51 INFO  Ims:52 - What would you like to do with order:
+2020-02-12 14:00:51 INFO  Action:36 - CREATE: To save a new item into the database
+2020-02-12 14:00:51 INFO  Action:36 - READ: To read an item from the database
+2020-02-12 14:00:51 INFO  Action:36 - UPDATE: To change an item already in the database
+2020-02-12 14:00:51 INFO  Action:36 - DELETE: To remove an item from the database
+2020-02-12 14:00:51 INFO  Action:36 - RETURN: To return to domain selection
+2020-02-12 14:00:53 INFO  MysqlOrderDao:34 - Connecting database...
+2020-02-12 14:00:53 INFO  MysqlOrderDao:37 - Database connected!
+2020-02-12 14:00:53 INFO  OrderController:44 - Please enter a order cost
+2020-02-12 14:00:57 INFO  OrderController:46 - Please enter a customer id
+2020-02-12 14:00:59 INFO  OrderController:48 - Please enter a discount
+2020-02-12 14:01:02 ERROR MysqlOrderDao:126 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '',15)' at line 1
+2020-02-12 14:01:02 INFO  OrderController:51 - Item created
+2020-02-12 14:01:02 INFO  Ims:45 - Which entity would you like to use?
+2020-02-12 14:01:02 INFO  Domain:35 - CUSTOMER: Information about customers
+2020-02-12 14:01:02 INFO  Domain:35 - ITEM: Individual Items
+2020-02-12 14:01:02 INFO  Domain:35 - ORDER: Purchases of items
+2020-02-12 14:01:02 INFO  Domain:35 - STOP: To close the application
+2020-02-12 14:01:21 INFO  Ims:37 - What is your username
+2020-02-12 14:01:23 INFO  Ims:39 - What is your password
+2020-02-12 14:01:25 INFO  Ims:45 - Which entity would you like to use?
+2020-02-12 14:01:25 INFO  Domain:35 - CUSTOMER: Information about customers
+2020-02-12 14:01:25 INFO  Domain:35 - ITEM: Individual Items
+2020-02-12 14:01:25 INFO  Domain:35 - ORDER: Purchases of items
+2020-02-12 14:01:25 INFO  Domain:35 - STOP: To close the application
+2020-02-12 14:01:27 INFO  Ims:52 - What would you like to do with order:
+2020-02-12 14:01:27 INFO  Action:36 - CREATE: To save a new item into the database
+2020-02-12 14:01:27 INFO  Action:36 - READ: To read an item from the database
+2020-02-12 14:01:27 INFO  Action:36 - UPDATE: To change an item already in the database
+2020-02-12 14:01:27 INFO  Action:36 - DELETE: To remove an item from the database
+2020-02-12 14:01:27 INFO  Action:36 - RETURN: To return to domain selection
+2020-02-12 14:01:29 INFO  MysqlOrderDao:34 - Connecting database...
+2020-02-12 14:01:29 INFO  MysqlOrderDao:37 - Database connected!
+2020-02-12 14:01:29 INFO  OrderController:44 - Please enter a order cost
+2020-02-12 14:01:31 INFO  OrderController:46 - Please enter a customer id
+2020-02-12 14:01:32 INFO  OrderController:48 - Please enter a discount
+2020-02-12 14:01:33 ERROR MysqlOrderDao:126 - Cannot add or update a child row: a foreign key constraint fails (`inventory_management_sys`.`orders`, CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`))
+2020-02-12 14:01:33 INFO  OrderController:51 - Item created
+2020-02-12 14:01:33 INFO  Ims:45 - Which entity would you like to use?
+2020-02-12 14:01:33 INFO  Domain:35 - CUSTOMER: Information about customers
+2020-02-12 14:01:33 INFO  Domain:35 - ITEM: Individual Items
+2020-02-12 14:01:33 INFO  Domain:35 - ORDER: Purchases of items
+2020-02-12 14:01:33 INFO  Domain:35 - STOP: To close the application
+2020-02-12 14:31:18 INFO  Ims:37 - What is your username
+2020-02-12 14:31:20 INFO  Ims:39 - What is your password
+2020-02-12 14:31:23 INFO  Ims:45 - Which entity would you like to use?
+2020-02-12 14:31:23 INFO  Domain:35 - CUSTOMER: Information about customers
+2020-02-12 14:31:23 INFO  Domain:35 - ITEM: Individual Items
+2020-02-12 14:31:23 INFO  Domain:35 - ORDER: Purchases of items
+2020-02-12 14:31:23 INFO  Domain:35 - STOP: To close the application
+2020-02-12 14:31:25 INFO  Ims:52 - What would you like to do with order:
+2020-02-12 14:31:25 INFO  Action:36 - CREATE: To save a new item into the database
+2020-02-12 14:31:25 INFO  Action:36 - READ: To read an item from the database
+2020-02-12 14:31:25 INFO  Action:36 - UPDATE: To change an item already in the database
+2020-02-12 14:31:25 INFO  Action:36 - DELETE: To remove an item from the database
+2020-02-12 14:31:25 INFO  Action:36 - RETURN: To return to domain selection
+2020-02-12 14:31:27 INFO  MysqlOrderDao:34 - Connecting database...
+2020-02-12 14:31:27 INFO  MysqlOrderDao:37 - Database connected!
+2020-02-12 14:31:27 INFO  OrderController:44 - Please enter a order cost
+2020-02-12 14:31:29 INFO  OrderController:46 - Please enter a customer id
+2020-02-12 14:31:31 INFO  OrderController:48 - Please enter a discount
+2020-02-12 14:31:32 ERROR MysqlOrderDao:103 - Unknown column 'item_id' in 'order clause'
+2020-02-12 14:31:32 INFO  OrderController:51 - Item created
+2020-02-12 14:31:32 INFO  Ims:45 - Which entity would you like to use?
+2020-02-12 14:31:32 INFO  Domain:35 - CUSTOMER: Information about customers
+2020-02-12 14:31:32 INFO  Domain:35 - ITEM: Individual Items
+2020-02-12 14:31:32 INFO  Domain:35 - ORDER: Purchases of items
+2020-02-12 14:31:32 INFO  Domain:35 - STOP: To close the application
+2020-02-12 14:34:17 INFO  Ims:37 - What is your username
+2020-02-12 14:34:18 INFO  Ims:39 - What is your password
+2020-02-12 14:34:21 INFO  Ims:45 - Which entity would you like to use?
+2020-02-12 14:34:21 INFO  Domain:35 - CUSTOMER: Information about customers
+2020-02-12 14:34:21 INFO  Domain:35 - ITEM: Individual Items
+2020-02-12 14:34:21 INFO  Domain:35 - ORDER: Purchases of items
+2020-02-12 14:34:21 INFO  Domain:35 - STOP: To close the application
+2020-02-12 14:34:24 INFO  Ims:52 - What would you like to do with order:
+2020-02-12 14:34:24 INFO  Action:36 - CREATE: To save a new item into the database
+2020-02-12 14:34:24 INFO  Action:36 - READ: To read an item from the database
+2020-02-12 14:34:24 INFO  Action:36 - UPDATE: To change an item already in the database
+2020-02-12 14:34:24 INFO  Action:36 - DELETE: To remove an item from the database
+2020-02-12 14:34:24 INFO  Action:36 - RETURN: To return to domain selection
+2020-02-12 14:34:25 INFO  MysqlOrderDao:34 - Connecting database...
+2020-02-12 14:34:26 INFO  MysqlOrderDao:37 - Database connected!
+2020-02-12 14:34:26 INFO  OrderController:44 - Please enter a order cost
+2020-02-12 14:34:27 INFO  OrderController:46 - Please enter a customer id
+2020-02-12 14:34:28 INFO  OrderController:48 - Please enter a discount
+2020-02-12 14:34:30 INFO  OrderController:51 - Order created
+2020-02-12 14:34:30 INFO  Ims:45 - Which entity would you like to use?
+2020-02-12 14:34:30 INFO  Domain:35 - CUSTOMER: Information about customers
+2020-02-12 14:34:30 INFO  Domain:35 - ITEM: Individual Items
+2020-02-12 14:34:30 INFO  Domain:35 - ORDER: Purchases of items
+2020-02-12 14:34:30 INFO  Domain:35 - STOP: To close the application
+2020-02-12 14:35:00 INFO  Ims:52 - What would you like to do with order:
+2020-02-12 14:35:00 INFO  Action:36 - CREATE: To save a new item into the database
+2020-02-12 14:35:00 INFO  Action:36 - READ: To read an item from the database
+2020-02-12 14:35:00 INFO  Action:36 - UPDATE: To change an item already in the database
+2020-02-12 14:35:00 INFO  Action:36 - DELETE: To remove an item from the database
+2020-02-12 14:35:00 INFO  Action:36 - RETURN: To return to domain selection
+2020-02-12 14:35:02 INFO  MysqlOrderDao:34 - Connecting database...
+2020-02-12 14:35:02 INFO  MysqlOrderDao:37 - Database connected!
+2020-02-12 14:35:02 INFO  OrderController:56 - Please enter the id of the order you would like to update
+2020-02-12 14:35:05 INFO  OrderController:58 - Please enter a order cost
+2020-02-12 14:35:07 INFO  OrderController:60 - Please enter a customer id
+2020-02-12 14:35:09 INFO  OrderController:62 - Please enter a discount
+2020-02-12 14:35:10 ERROR MysqlOrderDao:170 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '', discount =14 WHERE order_id =2' at line 1
+2020-02-12 14:35:10 INFO  OrderController:65 - Order updated
+2020-02-12 14:35:10 INFO  Ims:45 - Which entity would you like to use?
+2020-02-12 14:35:10 INFO  Domain:35 - CUSTOMER: Information about customers
+2020-02-12 14:35:10 INFO  Domain:35 - ITEM: Individual Items
+2020-02-12 14:35:10 INFO  Domain:35 - ORDER: Purchases of items
+2020-02-12 14:35:10 INFO  Domain:35 - STOP: To close the application
+2020-02-12 14:35:30 INFO  Ims:37 - What is your username
+2020-02-12 14:35:32 INFO  Ims:39 - What is your password
+2020-02-12 14:35:34 INFO  Ims:45 - Which entity would you like to use?
+2020-02-12 14:35:34 INFO  Domain:35 - CUSTOMER: Information about customers
+2020-02-12 14:35:34 INFO  Domain:35 - ITEM: Individual Items
+2020-02-12 14:35:34 INFO  Domain:35 - ORDER: Purchases of items
+2020-02-12 14:35:34 INFO  Domain:35 - STOP: To close the application
+2020-02-12 14:35:35 INFO  Ims:52 - What would you like to do with order:
+2020-02-12 14:35:35 INFO  Action:36 - CREATE: To save a new item into the database
+2020-02-12 14:35:35 INFO  Action:36 - READ: To read an item from the database
+2020-02-12 14:35:35 INFO  Action:36 - UPDATE: To change an item already in the database
+2020-02-12 14:35:35 INFO  Action:36 - DELETE: To remove an item from the database
+2020-02-12 14:35:35 INFO  Action:36 - RETURN: To return to domain selection
+2020-02-12 14:35:37 INFO  MysqlOrderDao:34 - Connecting database...
+2020-02-12 14:35:37 INFO  MysqlOrderDao:37 - Database connected!
+2020-02-12 14:35:37 INFO  OrderController:56 - Please enter the id of the order you would like to update
+2020-02-12 14:35:39 INFO  OrderController:58 - Please enter a order cost
+2020-02-12 14:35:41 INFO  OrderController:60 - Please enter a customer id
+2020-02-12 14:35:42 INFO  OrderController:62 - Please enter a discount
+2020-02-12 14:35:43 INFO  OrderController:65 - Order updated
+2020-02-12 14:35:43 INFO  Ims:45 - Which entity would you like to use?
+2020-02-12 14:35:43 INFO  Domain:35 - CUSTOMER: Information about customers
+2020-02-12 14:35:43 INFO  Domain:35 - ITEM: Individual Items
+2020-02-12 14:35:43 INFO  Domain:35 - ORDER: Purchases of items
+2020-02-12 14:35:43 INFO  Domain:35 - STOP: To close the application
+2020-02-12 14:35:46 INFO  Ims:52 - What would you like to do with order:
+2020-02-12 14:35:46 INFO  Action:36 - CREATE: To save a new item into the database
+2020-02-12 14:35:46 INFO  Action:36 - READ: To read an item from the database
+2020-02-12 14:35:46 INFO  Action:36 - UPDATE: To change an item already in the database
+2020-02-12 14:35:46 INFO  Action:36 - DELETE: To remove an item from the database
+2020-02-12 14:35:46 INFO  Action:36 - RETURN: To return to domain selection
+2020-02-12 14:35:49 INFO  MysqlOrderDao:34 - Connecting database...
+2020-02-12 14:35:49 INFO  MysqlOrderDao:37 - Database connected!
+2020-02-12 14:35:49 INFO  Ims:45 - Which entity would you like to use?
+2020-02-12 14:35:49 INFO  Domain:35 - CUSTOMER: Information about customers
+2020-02-12 14:35:49 INFO  Domain:35 - ITEM: Individual Items
+2020-02-12 14:35:49 INFO  Domain:35 - ORDER: Purchases of items
+2020-02-12 14:35:49 INFO  Domain:35 - STOP: To close the application
+2020-02-12 14:35:58 INFO  Ims:52 - What would you like to do with order:
+2020-02-12 14:35:58 INFO  Action:36 - CREATE: To save a new item into the database
+2020-02-12 14:35:58 INFO  Action:36 - READ: To read an item from the database
+2020-02-12 14:35:58 INFO  Action:36 - UPDATE: To change an item already in the database
+2020-02-12 14:35:58 INFO  Action:36 - DELETE: To remove an item from the database
+2020-02-12 14:35:58 INFO  Action:36 - RETURN: To return to domain selection
+2020-02-12 14:36:00 INFO  MysqlOrderDao:34 - Connecting database...
+2020-02-12 14:36:01 INFO  MysqlOrderDao:37 - Database connected!
+2020-02-12 14:36:01 INFO  OrderController:70 - Please enter the id of the order you would like to delete
+2020-02-12 14:36:02 INFO  Ims:45 - Which entity would you like to use?
+2020-02-12 14:36:02 INFO  Domain:35 - CUSTOMER: Information about customers
+2020-02-12 14:36:02 INFO  Domain:35 - ITEM: Individual Items
+2020-02-12 14:36:02 INFO  Domain:35 - ORDER: Purchases of items
+2020-02-12 14:36:02 INFO  Domain:35 - STOP: To close the application
+2020-02-12 14:36:05 INFO  Ims:52 - What would you like to do with order:
+2020-02-12 14:36:05 INFO  Action:36 - CREATE: To save a new item into the database
+2020-02-12 14:36:05 INFO  Action:36 - READ: To read an item from the database
+2020-02-12 14:36:05 INFO  Action:36 - UPDATE: To change an item already in the database
+2020-02-12 14:36:05 INFO  Action:36 - DELETE: To remove an item from the database
+2020-02-12 14:36:05 INFO  Action:36 - RETURN: To return to domain selection
+2020-02-12 14:36:06 INFO  MysqlOrderDao:34 - Connecting database...
+2020-02-12 14:36:06 INFO  MysqlOrderDao:37 - Database connected!
+2020-02-12 14:36:06 INFO  Ims:45 - Which entity would you like to use?
+2020-02-12 14:36:06 INFO  Domain:35 - CUSTOMER: Information about customers
+2020-02-12 14:36:06 INFO  Domain:35 - ITEM: Individual Items
+2020-02-12 14:36:06 INFO  Domain:35 - ORDER: Purchases of items
+2020-02-12 14:36:06 INFO  Domain:35 - STOP: To close the application
+2020-02-12 14:36:12 INFO  Ims:52 - What would you like to do with order:
+2020-02-12 14:36:12 INFO  Action:36 - CREATE: To save a new item into the database
+2020-02-12 14:36:12 INFO  Action:36 - READ: To read an item from the database
+2020-02-12 14:36:12 INFO  Action:36 - UPDATE: To change an item already in the database
+2020-02-12 14:36:12 INFO  Action:36 - DELETE: To remove an item from the database
+2020-02-12 14:36:12 INFO  Action:36 - RETURN: To return to domain selection
+2020-02-12 14:36:14 INFO  MysqlOrderDao:34 - Connecting database...
+2020-02-12 14:36:14 INFO  MysqlOrderDao:37 - Database connected!
+2020-02-12 14:36:14 INFO  OrderController:70 - Please enter the id of the order you would like to delete
+2020-02-12 14:36:15 INFO  Ims:45 - Which entity would you like to use?
+2020-02-12 14:36:15 INFO  Domain:35 - CUSTOMER: Information about customers
+2020-02-12 14:36:15 INFO  Domain:35 - ITEM: Individual Items
+2020-02-12 14:36:15 INFO  Domain:35 - ORDER: Purchases of items
+2020-02-12 14:36:15 INFO  Domain:35 - STOP: To close the application
+2020-02-12 14:36:18 INFO  Ims:52 - What would you like to do with order:
+2020-02-12 14:36:18 INFO  Action:36 - CREATE: To save a new item into the database
+2020-02-12 14:36:18 INFO  Action:36 - READ: To read an item from the database
+2020-02-12 14:36:18 INFO  Action:36 - UPDATE: To change an item already in the database
+2020-02-12 14:36:18 INFO  Action:36 - DELETE: To remove an item from the database
+2020-02-12 14:36:18 INFO  Action:36 - RETURN: To return to domain selection
+2020-02-12 14:36:19 INFO  MysqlOrderDao:34 - Connecting database...
+2020-02-12 14:36:19 INFO  MysqlOrderDao:37 - Database connected!
+2020-02-12 14:36:19 INFO  Ims:45 - Which entity would you like to use?
+2020-02-12 14:36:19 INFO  Domain:35 - CUSTOMER: Information about customers
+2020-02-12 14:36:19 INFO  Domain:35 - ITEM: Individual Items
+2020-02-12 14:36:19 INFO  Domain:35 - ORDER: Purchases of items
+2020-02-12 14:36:19 INFO  Domain:35 - STOP: To close the application
+2020-02-12 14:36:28 INFO  Ims:37 - What is your username
+2020-02-12 14:36:29 INFO  Ims:39 - What is your password
+2020-02-12 14:36:31 INFO  Ims:45 - Which entity would you like to use?
+2020-02-12 14:36:31 INFO  Domain:35 - CUSTOMER: Information about customers
+2020-02-12 14:36:31 INFO  Domain:35 - ITEM: Individual Items
+2020-02-12 14:36:31 INFO  Domain:35 - ORDER: Purchases of items
+2020-02-12 14:36:31 INFO  Domain:35 - STOP: To close the application
+2020-02-12 14:36:33 INFO  Ims:52 - What would you like to do with order:
+2020-02-12 14:36:33 INFO  Action:36 - CREATE: To save a new item into the database
+2020-02-12 14:36:33 INFO  Action:36 - READ: To read an item from the database
+2020-02-12 14:36:33 INFO  Action:36 - UPDATE: To change an item already in the database
+2020-02-12 14:36:33 INFO  Action:36 - DELETE: To remove an item from the database
+2020-02-12 14:36:33 INFO  Action:36 - RETURN: To return to domain selection
+2020-02-12 14:36:34 INFO  MysqlOrderDao:34 - Connecting database...
+2020-02-12 14:36:34 INFO  MysqlOrderDao:37 - Database connected!
+2020-02-12 14:36:34 INFO  OrderController:44 - Please enter a order cost
+2020-02-12 14:36:36 INFO  OrderController:46 - Please enter a customer id
+2020-02-12 14:36:37 INFO  OrderController:48 - Please enter a discount
+2020-02-12 14:36:38 INFO  OrderController:51 - Order created
+2020-02-12 14:36:38 INFO  Ims:45 - Which entity would you like to use?
+2020-02-12 14:36:38 INFO  Domain:35 - CUSTOMER: Information about customers
+2020-02-12 14:36:38 INFO  Domain:35 - ITEM: Individual Items
+2020-02-12 14:36:38 INFO  Domain:35 - ORDER: Purchases of items
+2020-02-12 14:36:38 INFO  Domain:35 - STOP: To close the application
+2020-02-12 14:36:40 INFO  Ims:52 - What would you like to do with order:
+2020-02-12 14:36:40 INFO  Action:36 - CREATE: To save a new item into the database
+2020-02-12 14:36:40 INFO  Action:36 - READ: To read an item from the database
+2020-02-12 14:36:40 INFO  Action:36 - UPDATE: To change an item already in the database
+2020-02-12 14:36:40 INFO  Action:36 - DELETE: To remove an item from the database
+2020-02-12 14:36:40 INFO  Action:36 - RETURN: To return to domain selection
+2020-02-12 14:36:41 INFO  MysqlOrderDao:34 - Connecting database...
+2020-02-12 14:36:41 INFO  MysqlOrderDao:37 - Database connected!
+2020-02-12 14:36:41 INFO  OrderController:56 - Please enter the id of the order you would like to update
+2020-02-12 14:36:43 INFO  OrderController:58 - Please enter a order cost
+2020-02-12 14:36:45 INFO  OrderController:60 - Please enter a customer id
+2020-02-12 14:36:48 INFO  OrderController:62 - Please enter a discount
+2020-02-12 14:36:49 INFO  OrderController:65 - Order updated
+2020-02-12 14:36:49 INFO  Ims:45 - Which entity would you like to use?
+2020-02-12 14:36:49 INFO  Domain:35 - CUSTOMER: Information about customers
+2020-02-12 14:36:49 INFO  Domain:35 - ITEM: Individual Items
+2020-02-12 14:36:49 INFO  Domain:35 - ORDER: Purchases of items
+2020-02-12 14:36:49 INFO  Domain:35 - STOP: To close the application
+2020-02-12 14:36:50 INFO  Ims:52 - What would you like to do with order:
+2020-02-12 14:36:50 INFO  Action:36 - CREATE: To save a new item into the database
+2020-02-12 14:36:50 INFO  Action:36 - READ: To read an item from the database
+2020-02-12 14:36:50 INFO  Action:36 - UPDATE: To change an item already in the database
+2020-02-12 14:36:50 INFO  Action:36 - DELETE: To remove an item from the database
+2020-02-12 14:36:50 INFO  Action:36 - RETURN: To return to domain selection
+2020-02-12 14:36:51 INFO  MysqlOrderDao:34 - Connecting database...
+2020-02-12 14:36:51 INFO  MysqlOrderDao:37 - Database connected!
+2020-02-12 14:36:51 INFO  Ims:45 - Which entity would you like to use?
+2020-02-12 14:36:51 INFO  Domain:35 - CUSTOMER: Information about customers
+2020-02-12 14:36:51 INFO  Domain:35 - ITEM: Individual Items
+2020-02-12 14:36:51 INFO  Domain:35 - ORDER: Purchases of items
+2020-02-12 14:36:51 INFO  Domain:35 - STOP: To close the application

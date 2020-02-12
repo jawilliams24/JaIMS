@@ -21,9 +21,8 @@ public class Item {
 	 * @param itemQuantity
 	 */
 	
-	public Item(String itemName, float itemValue, Long itemQuantity) {
+	public Item(String itemName, float itemValue) {
 		this.itemName = itemName;
-		this.itemQuantity = itemQuantity;
 		this.itemValue = itemValue;
 	}
 
@@ -35,10 +34,9 @@ public class Item {
 	 * @param itemQuantity
 	 */
 	
-	public Item(Long itemId, String itemName, float itemValue, Long itemQuantity) {
+	public Item(Long itemId, String itemName, float itemValue) {
 		this.itemId = itemId;
 		this.itemName = itemName;
-		this.itemQuantity = itemQuantity;
 		this.itemValue = itemValue;
 	}
 
