@@ -1,5 +1,7 @@
 package com.qa.domain;
 
+import java.util.ArrayList;
+
 /**
  * This class is to create Orders for my database
  * 
@@ -14,6 +16,7 @@ public class Order {
 	private float orderCost;
 	private Long customerId;
 	private Long discount;
+	ArrayList<Item> itemsInOrder;
 	
 	public Order(float orderCost, Long customerId, Long discount) {
 		this.orderCost = orderCost;
@@ -27,7 +30,17 @@ public class Order {
 		this.customerId = customerId;
 		this.discount = discount;
 	}
+	
+	public Order(Long customerId, ArrayList<Item> itemsInOrder) {
+		this.customerId = customerId;
+		this.itemsInOrder = itemsInOrder;
+	}
+	
 
+	public Order(Long orderId) {
+		this.orderId = orderId;
+	}
+	
 	public Long getOrderId() {
 		return orderId;
 	}
@@ -62,6 +75,14 @@ public class Order {
 	
 	public String toString() {
 		return "id:" + orderId + " order cost:" + orderCost + " customer id:" + customerId + " discount:" + discount;
+	}
+
+	public ArrayList<Item> getItemsInOrder() {
+		return itemsInOrder;
+	}
+
+	public void setItemsInOrder(ArrayList<Item> itemsInOrder) {
+		this.itemsInOrder = itemsInOrder;
 	}
 
 	

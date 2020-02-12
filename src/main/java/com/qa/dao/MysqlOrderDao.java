@@ -116,8 +116,8 @@ public class MysqlOrderDao implements Dao<Order> {
 	public Order create(Order order) {
 		try {
 			statement = conn.createStatement();
-			statement.executeUpdate("INSERT INTO orders(cost, customer_id, discount) VALUES('" + order.getOrderCost()
-					+ "'," + order.getCustomerId() + "," + order.getDiscount() + ");");
+			statement.executeUpdate("INSERT INTO orders(customer_id, cost, discount) VALUES('" 
+					+ order.getCustomerId()+ order.getOrderCost() + "," + order.getDiscount() + ");");
 			return readLatest();
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
@@ -162,8 +162,8 @@ public class MysqlOrderDao implements Dao<Order> {
 	public Order update(Order order) {
 		try {
 			statement = conn.createStatement();
-			statement.executeUpdate("UPDATE orders SET cost ='" + order.getOrderCost() + "', customer_id ="
-					+ order.getCustomerId() + ", discount =" + order.getDiscount() + " WHERE order_id =" + order.getOrderId() + ";");
+			statement.executeUpdate("UPDATE orders SET cost ='" + order.getOrderCost() + 
+					", discount =" + order.getDiscount() + ", item_quantity =" + order.getItemsInOrder() + " WHERE order_id =" + order.getOrderId() + ";");
 			return readOrder(order.getOrderId());
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
@@ -215,6 +215,11 @@ public class MysqlOrderDao implements Dao<Order> {
 			LOGGER.debug(se.getStackTrace());
 		}
 
+	}
+
+	@Override
+	public Order readSingle(Order t) {
+		return null;
 	}
 
 }

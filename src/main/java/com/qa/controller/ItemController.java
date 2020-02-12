@@ -44,7 +44,7 @@ public class ItemController implements CrudController<Item>{
 		LOGGER.info("Please enter a item value");
 		float itemValue = Float.parseFloat(getInput());
 		Item item = itemService.create(new Item(itemName, itemValue));
-		LOGGER.info("Item created");
+		LOGGER.info("Item successfully created.\n");
 		return item;
 	}
 
@@ -56,7 +56,7 @@ public class ItemController implements CrudController<Item>{
 		LOGGER.info("Please enter a item value");
 		float itemValue = Float.parseFloat(getInput());
 		Item item = itemService.update(new Item(itemId, itemName, itemValue));
-		LOGGER.info("Item updated");
+		LOGGER.info("Item successfully updated.\n");
 		return item;
 	}
 
@@ -64,6 +64,14 @@ public class ItemController implements CrudController<Item>{
 		LOGGER.info("Please enter the id of the item you would like to delete");
 		Long itemId = Long.valueOf(getInput());
 		itemService.delete(itemId);
+		LOGGER.info("Item successfully deleted.\n");
+		
+	}
+
+	@Override
+	public Item readSingle(Item item) {
+
+		return itemService.readSingle(new Item(item.getItemId()));
 	}
 	
 }

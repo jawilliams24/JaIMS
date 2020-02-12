@@ -16,4 +16,6 @@ public interface CrudController<T> {
      
     void delete();
 
+	T readSingle(T t);
+
 }

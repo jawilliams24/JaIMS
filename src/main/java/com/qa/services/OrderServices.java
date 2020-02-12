@@ -43,4 +43,9 @@ public class OrderServices implements CrudServices<Order> {
 
 	}
 
+	@Override
+	public Order readSingle(Order order) {
+		return orderDao.readSingle(order);
+	}
+
 }

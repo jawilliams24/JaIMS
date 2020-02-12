@@ -215,4 +215,10 @@ public class MysqlItemDao implements Dao<Item> {
 
 	}
 
+	@Override
+	public Item readSingle(Item t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

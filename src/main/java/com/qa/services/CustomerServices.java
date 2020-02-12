@@ -40,4 +40,9 @@ public class CustomerServices implements CrudServices<Customer> {
 		customerDao.delete(id);
 	}
 
+	@Override
+	public Customer readSingle(Customer customer) {
+		return customerDao.readSingle(customer);
+	}
+
 }

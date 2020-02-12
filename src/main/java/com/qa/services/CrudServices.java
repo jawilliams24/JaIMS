@@ -13,6 +13,8 @@ import java.util.List;
 public interface CrudServices<T> {
 
     public List<T> readAll();
+    
+    T readSingle(T t);
      
     T create(T t);
      

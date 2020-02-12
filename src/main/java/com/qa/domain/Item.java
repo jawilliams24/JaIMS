@@ -39,6 +39,10 @@ public class Item {
 		this.itemName = itemName;
 		this.itemValue = itemValue;
 	}
+	
+	public Item(Long id) {
+		this.itemId = id;
+	}
 
 	/**
 	 * Getters and Setters for Item parameters.

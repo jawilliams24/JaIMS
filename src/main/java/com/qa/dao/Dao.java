@@ -15,6 +15,8 @@ public interface Dao<T> {
 	
 	public List<T> readAll();
 	
+	public T readSingle(T t);
+	
 	public T update(T t);
 	
 	public void delete(long id);

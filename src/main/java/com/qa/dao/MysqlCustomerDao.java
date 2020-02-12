@@ -137,10 +137,10 @@ public class MysqlCustomerDao implements Dao<Customer> {
 	 * 
 	 */
 	
-	public Customer readCustomer(Long id) {
+	public Customer readSingle(Customer customer) {
 		try {
 			statement = conn.createStatement();
-			resultSet = statement.executeQuery("SELECT * FROM customers where customer_id = " + id);
+			resultSet = statement.executeQuery("SELECT * FROM customers where customer_id = " + customer.getId());
 			resultSet.next();
 			return customerFromResultSet(resultSet);
 		} catch (Exception e) {
@@ -164,7 +164,7 @@ public class MysqlCustomerDao implements Dao<Customer> {
 			statement = conn.createStatement();
 			statement.executeUpdate("UPDATE customers SET first_name ='" + customer.getFirstName() + "', surname ='"
 					+ customer.getSurname() + "' WHERE customer_id =" + customer.getId() + ";");
-			return readCustomer(customer.getId());
+//			return readSingle(customer.getId());
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
@@ -216,5 +216,7 @@ public class MysqlCustomerDao implements Dao<Customer> {
 		}
 
 	}
+
+
 
 }
