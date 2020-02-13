@@ -34,15 +34,7 @@ public class MysqlCustomerDao implements Dao<Customer> {
 	public MysqlCustomerDao() {
 		LOGGER.info("Connecting database...");
 		LOGGER.info("Database connected!");
-//		LOGGER.info("Connecting database...");
-//		try {
-//			this.conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
-//			LOGGER.info("Database connected!");
-//		} catch (SQLException e) {
-//			LOGGER.debug(e.getStackTrace());
-//		} finally {
-//			close();
-//		}
+
 	}
 
 	/**
@@ -61,8 +53,6 @@ public class MysqlCustomerDao implements Dao<Customer> {
 			return new Customer(id, firstName, surname);
 		} catch (SQLException e) {
 			LOGGER.debug(e.getStackTrace());
-		} finally {
-			close();
 		}
 		return null;
 	}
@@ -83,10 +73,6 @@ public class MysqlCustomerDao implements Dao<Customer> {
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 		}
-
-		finally {
-			close();
-		}
 		return new ArrayList<>();
 	}
 
@@ -105,10 +91,6 @@ public class MysqlCustomerDao implements Dao<Customer> {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
 		}
-
-		finally {
-			close();
-		}
 		return null;
 	}
 
@@ -126,10 +108,6 @@ public class MysqlCustomerDao implements Dao<Customer> {
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
-		}
-
-		finally {
-			close();
 		}
 
 		return null;
@@ -153,10 +131,6 @@ public class MysqlCustomerDao implements Dao<Customer> {
 			LOGGER.error(e.getMessage());
 		}
 
-		finally {
-			close();
-		}
-
 		return null;
 	}
 
@@ -175,10 +149,6 @@ public class MysqlCustomerDao implements Dao<Customer> {
 			LOGGER.error(e.getMessage());
 		}
 
-		finally {
-			close();
-		}
-
 		return null;
 	}
 
@@ -195,32 +165,8 @@ public class MysqlCustomerDao implements Dao<Customer> {
 			LOGGER.error(e.getMessage());
 		}
 
-		finally {
-			close();
-		}
-
 	}
 
-	/**
-	 * Really useful close method to automatically close the connection when
-	 * finished.
-	 */
-
-	public void close() {
-		try {
-			if (statement != null)
-				statement.close();
-		} catch (SQLException se2) {
-			LOGGER.debug(se2.getStackTrace());
-		}
-		try {
-			if (resultSet != null)
-
-				resultSet.close();
-		} catch (SQLException se) {
-			LOGGER.debug(se.getStackTrace());
-		}
-
-	}
+	
 
 }
