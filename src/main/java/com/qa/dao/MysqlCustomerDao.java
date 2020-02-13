@@ -30,32 +30,35 @@ public class MysqlCustomerDao implements Dao<Customer> {
 	/**
 	 * Connects the program to the database.
 	 */
-	
+
 	public MysqlCustomerDao() {
 		LOGGER.info("Connecting database...");
-		try {
-			this.conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
-			LOGGER.info("Database connected!");
-		} catch (SQLException e) {
-			LOGGER.debug(e.getStackTrace());
-		} finally {
-			close();
-		}
+		LOGGER.info("Database connected!");
+//		LOGGER.info("Connecting database...");
+//		try {
+//			this.conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+//			LOGGER.info("Database connected!");
+//		} catch (SQLException e) {
+//			LOGGER.debug(e.getStackTrace());
+//		} finally {
+//			close();
+//		}
 	}
 
 	/**
 	 * Converts the returns the resultSet as a customer.
+	 * 
 	 * @param resultSet
 	 * 
 	 */
-	
+
 	Customer customerFromResultSet(ResultSet resultSet) {
 		try {
-		
-		Long id = resultSet.getLong("customer_id");
-		String firstName = resultSet.getString("first_name");
-		String surname = resultSet.getString("surname");
-		return new Customer(id, firstName, surname);
+
+			Long id = resultSet.getLong("customer_id");
+			String firstName = resultSet.getString("first_name");
+			String surname = resultSet.getString("surname");
+			return new Customer(id, firstName, surname);
 		} catch (SQLException e) {
 			LOGGER.debug(e.getStackTrace());
 		} finally {
@@ -67,10 +70,10 @@ public class MysqlCustomerDao implements Dao<Customer> {
 	/**
 	 * Reads all customers from the database.
 	 */
-	
+
 	public List<Customer> readAll() {
-		try {
-			statement = conn.createStatement();
+		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+				Statement statement = conn.createStatement();) {
 			resultSet = statement.executeQuery("SELECT * FROM customers");
 
 			Utilities util = new Utilities();
@@ -88,13 +91,13 @@ public class MysqlCustomerDao implements Dao<Customer> {
 	}
 
 	/**
-	 * Reads the latest customer from the database. 
+	 * Reads the latest customer from the database.
 	 * 
 	 */
-	
+
 	public Customer readLatest() {
-		try {
-			statement = conn.createStatement();
+		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+				Statement statement = conn.createStatement();) {
 			resultSet = statement.executeQuery("SELECT * FROM customers ORDER BY customer_id DESC LIMIT 1");
 			resultSet.next();
 			return customerFromResultSet(resultSet);
@@ -110,12 +113,13 @@ public class MysqlCustomerDao implements Dao<Customer> {
 	}
 
 	/**
-	 * Allows the user to create a customer, ignoring ID since that is auto-incremented.
+	 * Allows the user to create a customer, ignoring ID since that is
+	 * auto-incremented.
 	 */
-	
+
 	public Customer create(Customer customer) {
-		try {
-			statement = conn.createStatement();
+		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+				Statement statement = conn.createStatement();) {
 			statement.executeUpdate("INSERT INTO customers(first_name, surname) VALUES('" + customer.getFirstName()
 					+ "','" + customer.getSurname() + "');");
 			return readLatest();
@@ -133,14 +137,15 @@ public class MysqlCustomerDao implements Dao<Customer> {
 
 	/**
 	 * Allows the user to read a customer from the database.
+	 * 
 	 * @param id
 	 * 
 	 */
-	
-	public Customer readSingle(Customer customer) {
-		try {
-			statement = conn.createStatement();
-			resultSet = statement.executeQuery("SELECT * FROM customers where customer_id = " + customer.getId());
+
+	public Customer readSingle(long customer) {
+		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+				Statement statement = conn.createStatement();) {
+			resultSet = statement.executeQuery("SELECT * FROM customers where customer_id = " + customer);
 			resultSet.next();
 			return customerFromResultSet(resultSet);
 		} catch (Exception e) {
@@ -158,10 +163,10 @@ public class MysqlCustomerDao implements Dao<Customer> {
 	/**
 	 * Enables the UPDATE customer functionality.
 	 */
-	
+
 	public Customer update(Customer customer) {
-		try {
-			statement = conn.createStatement();
+		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+				Statement statement = conn.createStatement();) {
 			statement.executeUpdate("UPDATE customers SET first_name ='" + customer.getFirstName() + "', surname ='"
 					+ customer.getSurname() + "' WHERE customer_id =" + customer.getId() + ";");
 //			return readSingle(customer.getId());
@@ -180,10 +185,10 @@ public class MysqlCustomerDao implements Dao<Customer> {
 	/**
 	 * Enables the DELETE customer functionality.
 	 */
-	
+
 	public void delete(long id) {
-		try {
-			statement = conn.createStatement();
+		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+				Statement statement = conn.createStatement();) {
 			statement.executeUpdate("DELETE FROM customers WHERE customer_id = " + id);
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
@@ -197,9 +202,10 @@ public class MysqlCustomerDao implements Dao<Customer> {
 	}
 
 	/**
-	 * Really useful close method to automatically close the connection when finished.
+	 * Really useful close method to automatically close the connection when
+	 * finished.
 	 */
-	
+
 	public void close() {
 		try {
 			if (statement != null)
@@ -216,7 +222,5 @@ public class MysqlCustomerDao implements Dao<Customer> {
 		}
 
 	}
-
-
 
 }

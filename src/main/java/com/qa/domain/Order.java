@@ -13,23 +13,24 @@ import java.util.ArrayList;
 public class Order {
 
 	private Long orderId;
-	private float orderCost;
+	private Double orderCost;
 	private Long customerId;
-	private Long discount;
+	private Double discount;
 	ArrayList<Item> itemsInOrder;
 	
-	public Order(float orderCost, Long customerId, Long discount) {
+	public Order(Double orderCost, Long customerId, Double discount) {
 		this.orderCost = orderCost;
 		this.customerId = customerId;
 		this.discount = discount;
 	}
 	
-	public Order(Long orderId, float orderCost, Long customerId, Long discount) {
+	public Order(Long orderId, Double orderCost, Long customerId, Double discount) {
 		this.orderId = orderId;
 		this.orderCost = orderCost;
 		this.customerId = customerId;
 		this.discount = discount;
 	}
+	
 	
 	public Order(Long customerId, ArrayList<Item> itemsInOrder) {
 		this.customerId = customerId;
@@ -48,11 +49,11 @@ public class Order {
 		this.orderId = orderId;
 	}
 
-	public float getOrderCost() {
+	public Double getOrderCost() {
 		return orderCost;
 	}
 
-	public void setOrderCost(float orderCost) {
+	public void setOrderCost(Double orderCost) {
 		this.orderCost = orderCost;
 	}
 
@@ -64,11 +65,11 @@ public class Order {
 		this.customerId = customerId;
 	}
 
-	public Long getDiscount() {
+	public Double getDiscount() {
 		return discount;
 	}
 
-	public void setDiscount(Long discount) {
+	public void setDiscount(Double discount) {
 		this.discount = discount;
 	}
 	
@@ -83,6 +84,7 @@ public class Order {
 	public void setItemsInOrder(ArrayList<Item> itemsInOrder) {
 		this.itemsInOrder = itemsInOrder;
 	}
+
 
 	
 }

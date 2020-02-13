@@ -36,12 +36,12 @@ public class ItemServices implements CrudServices<Item> {
 	}
 
 	@Override
-	public void delete(Long id) {
-		itemDao.delete(id);
+	public void delete(Long itemId) {
+		itemDao.delete(itemId);
 	}
 
 	@Override
-	public Item readSingle(Item item) {
+	public Item readSingle(long item) {
 		return itemDao.readSingle(item);
 	}
 

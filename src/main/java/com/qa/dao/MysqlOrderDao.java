@@ -34,14 +34,7 @@ public class MysqlOrderDao implements Dao<Order> {
 
 	public MysqlOrderDao() {
 		LOGGER.info("Connecting database...");
-		try {
-			this.conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
-			LOGGER.info("Database connected!");
-		} catch (SQLException e) {
-			LOGGER.debug(e.getStackTrace());
-		} finally {
-			close();
-		}
+		LOGGER.info("Database connected!");
 	}
 
 	/**
@@ -53,11 +46,10 @@ public class MysqlOrderDao implements Dao<Order> {
 
 	Order orderFromResultSet(ResultSet resultSet) {
 		try {
-
 			Long orderId = resultSet.getLong("order_id");
-			float orderCost = resultSet.getFloat("cost");
+			Double orderCost = resultSet.getDouble("cost");
 			Long customerId = resultSet.getLong("customer_id");
-			Long discount = resultSet.getLong("discount");
+			Double discount = resultSet.getDouble("discount");
 			return new Order(orderId, orderCost, customerId, discount);
 		} catch (SQLException e) {
 			LOGGER.debug(e.getStackTrace());
@@ -72,8 +64,8 @@ public class MysqlOrderDao implements Dao<Order> {
 	 */
 
 	public List<Order> readAll() {
-		try {
-			statement = conn.createStatement();
+		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+				Statement statement = conn.createStatement();) {
 			resultSet = statement.executeQuery("SELECT * FROM orders");
 
 			Utilities util = new Utilities();
@@ -96,8 +88,8 @@ public class MysqlOrderDao implements Dao<Order> {
 	 */
 
 	public Order readLatest() {
-		try {
-			statement = conn.createStatement();
+		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+				Statement statement = conn.createStatement();) {
 			resultSet = statement.executeQuery("SELECT * FROM orders ORDER BY order_id DESC LIMIT 1");
 			resultSet.next();
 			return orderFromResultSet(resultSet);
@@ -114,40 +106,70 @@ public class MysqlOrderDao implements Dao<Order> {
 
 	/**
 	 * Allows the user to create an item, ignoring ID since that is
-	 * auto-incremented.
-	 * hello
+	 * auto-incremented. hello
 	 */
 
+	@SuppressWarnings("finally")
 	public Order create(Order order) {
-		try {
-			statement = conn.createStatement();
-			statement.executeUpdate("INSERT INTO orders(customer_id, cost, discount) VALUES(null,'" + order.getCustomerId()
-									+ order.getOrderCost() + "," + order.getDiscount() + ");", statement.RETURN_GENERATED_KEYS);
+		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+				Statement statement = conn.createStatement();) {
+			statement.executeUpdate("INSERT INTO orders(cost, customer_id, discount) VALUES(" +
+					order.getOrderCost() + "," + order.getCustomerId() + "," + order.getDiscount() + ");", Statement.RETURN_GENERATED_KEYS);
 			resultSet = statement.getGeneratedKeys();
 			resultSet.next();
-			Long orderId = (long) resultSet.getInt(1);
-			for (Item item : order.getItemsInOrder()) {
-				addItemToOrder(orderId, item);
-			}
-			return readLatest();
+			order.setOrderId((long) resultSet.getInt(1));
+
+			addItemToOrder(order);
+
+			updateCost(order);
+			LOGGER.info("Order created!");
+
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
-		}
+		} finally {
+			try {
 
-		finally {
-			close();
+				if (resultSet != null)
+
+					resultSet.close();
+
+			} catch (Exception e) {
+				LOGGER.debug(e.getStackTrace());
+				LOGGER.error(e.getMessage());
+
 		}
 
 		return null;
+		}
 	}
+//			Long orderId = (long) resultSet.getInt(1);
+//			for (Item item : order.getItemsInOrder()) {
+//				addItemToOrder(orderId, item);
+//			}
+//			return readLatest();
+//		} catch (Exception e) {
+//			LOGGER.debug(e.getStackTrace());
+//			LOGGER.error(e.getMessage());
+//		}
+//
+//		finally {
+//			close();
+//		}
+//
+//		return null;
+	
 
-	public Order addItemToOrder(Long orderId, Item item) {
-		try {
-			statement = conn.createStatement();
-			statement.executeUpdate(String.format("INSERT INTO item_order VALUES(null," + orderId + ","
-					+ item.getItemId() + "," + item.getItemValue() + "," + item.getItemQuantity() + ");"));
+	public Order addItemToOrder(Order order) {
+		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+				Statement statement = conn.createStatement();) {
+			for (Item item : order.getItemsInOrder()) {
 
+//			statement.executeUpdate(String.format("INSERT INTO item_order VALUES(null," + orderId+ ","
+//					+ item.getItemId() + "," + item.getItemValue() + "," + item.getItemQuantity() + ");"));
+				statement.executeUpdate(String.format("INSERT INTO itemorder values(null,'%s','%s','%s','%s');",
+						order.getOrderId(), item.getItemId(), item.getItemQuantity(), item.getItemValue()));
+			}
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
@@ -159,14 +181,15 @@ public class MysqlOrderDao implements Dao<Order> {
 		return null;
 
 	}
-	
+
 	public Order costCalculator(Order order) {
-		try {
-			statement = conn.createStatement();
-			resultSet = statement.executeQuery(String.format(
-					"SELECT SUM(item_quantity * sold_cost) FROM itemorder WHERE order_id =" + order.getOrderId() + ");"));
+		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+				Statement statement = conn.createStatement();) {
+			resultSet = statement
+					.executeQuery(String.format("SELECT SUM(quantity * sold_cost) FROM itemorder WHERE order_id ="
+							+ order.getOrderId() + ";"));
 			resultSet.next();
-			order.setOrderCost(resultSet.getFloat(1));
+			order.setOrderCost(resultSet.getDouble(1));
 
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
@@ -180,6 +203,30 @@ public class MysqlOrderDao implements Dao<Order> {
 
 	}
 
+	public Order updateCost(Order order) {
+		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password)) {
+			Order orderCost = costCalculator(order);
+			if (orderCost.getOrderCost() >= 10000) {
+
+				orderCost.setDiscount(orderCost.getOrderCost() * 0.1);
+				orderCost.setOrderCost(orderCost.getOrderCost() * 0.9);
+
+			}
+
+			try (Statement statement = conn.createStatement()) {
+				statement.executeUpdate(String.format("UPDATE orders SET cost = '%s', discount = '%s' WHERE order_id='%s';",
+						orderCost.getOrderCost(), orderCost.getDiscount(), orderCost.getOrderId()));
+			}
+
+		} catch (Exception e) {
+			LOGGER.debug(e.getStackTrace());
+			LOGGER.error(e.getMessage());
+
+		}
+		return null;
+
+	}
+
 	/**
 	 * Allows the user to read an item from the database.
 	 * 
@@ -188,8 +235,8 @@ public class MysqlOrderDao implements Dao<Order> {
 	 */
 
 	public Order readOrder(Long orderId) {
-		try {
-			statement = conn.createStatement();
+		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+				Statement statement = conn.createStatement();) {
 			resultSet = statement.executeQuery("SELECT * FROM orders WHERE order_id = " + orderId);
 			resultSet.next();
 			return orderFromResultSet(resultSet);
@@ -210,31 +257,46 @@ public class MysqlOrderDao implements Dao<Order> {
 	 */
 
 	public Order update(Order order) {
-		try {
-			statement = conn.createStatement();
-			statement.executeUpdate("UPDATE orders SET cost ='" + order.getOrderCost() + ", discount ="
-					+ order.getDiscount() + ", item_quantity =" + order.getItemsInOrder() + " WHERE order_id ="
-					+ order.getOrderId() + ";");
-			return readOrder(order.getOrderId());
+
+		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+				Statement statement = conn.createStatement();) {
+			Item item = order.getItemsInOrder().get(0);
+			statement.executeUpdate(
+					String.format("UPDATE item_order set item_quantity = '%s' WHERE order_id='%s' AND item_id = '%s';",
+							item.getItemQuantity(), order.getOrderId(), item.getItemId()));
+			updateCost(order);
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
 		}
-
-		finally {
-			close();
-		}
-
 		return null;
 	}
+
+//		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+//				Statement statement = conn.createStatement();) {
+//			statement.executeUpdate("UPDATE orders SET cost ='" + order.getOrderCost() + ", discount ="
+//					+ order.getDiscount() + ", item_quantity =" + order.getItemsInOrder() + " WHERE order_id ="
+//					+ order.getOrderId() + ";");
+//			return readOrder(order.getOrderId());
+//		} catch (Exception e) {
+//			LOGGER.debug(e.getStackTrace());
+//			LOGGER.error(e.getMessage());
+//		}
+//
+//		finally {
+//			close();
+//		}
+//
+//		return null;
+//	}
 
 	/**
 	 * Enables the DELETE item functionality.
 	 */
 
 	public void delete(long orderId) {
-		try {
-			statement = conn.createStatement();
+		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+				Statement statement = conn.createStatement();) {
 			statement.executeUpdate("DELETE FROM orders WHERE order_id = " + orderId);
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
@@ -269,7 +331,8 @@ public class MysqlOrderDao implements Dao<Order> {
 	}
 
 	@Override
-	public Order readSingle(Order t) {
+	public Order readSingle(long id) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

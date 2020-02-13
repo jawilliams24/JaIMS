@@ -68,7 +68,7 @@ public class CustomerController implements CrudController<Customer> {
 	}
 
 	@Override
-	public Customer readSingle(Customer t) {
+	public Customer readSingle(long t) {
 		return null;
 	}
 
