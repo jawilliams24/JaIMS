@@ -70,13 +70,13 @@ public class ItemControllerTest {
 	public void updateTest() {
 		String itemId = "1";
 		String itemName = "Apple";
-		String itemQuantity = "6";
 		String itemValue = "33";
 		Mockito.doReturn(itemId, itemName, itemValue).when(itemController).getInput();
 		Item item = new Item(1L, itemName, 33F);
 		item.setItemQuantity(6L);
 		Mockito.when(itemServices.update(item)).thenReturn(item);
-		assertEquals(item, itemController.update());
+		Item returnItem = itemController.update();
+		assertEquals(item, returnItem);
 	}
 
 	/**
