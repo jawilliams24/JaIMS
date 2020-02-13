@@ -4290,3 +4290,10 @@ customer_id = 4 first_name = Juamal surname = Blackman
 2020-02-13 19:08:07 INFO  Domain:34 - ITEM: Individual Items
 2020-02-13 19:08:07 INFO  Domain:34 - ORDER: Purchases of items
 2020-02-13 19:08:07 INFO  Domain:34 - STOP: To close the application
+2020-02-13 19:18:46 INFO  Ims:35 - What is your username
+2020-02-13 19:18:51 INFO  Ims:37 - What is your password
+2020-02-13 19:18:54 INFO  Ims:43 - Which entity would you like to use?
+2020-02-13 19:18:54 INFO  Domain:34 - CUSTOMER: Information about customers
+2020-02-13 19:18:54 INFO  Domain:34 - ITEM: Individual Items
+2020-02-13 19:18:54 INFO  Domain:34 - ORDER: Purchases of items
+2020-02-13 19:18:54 INFO  Domain:34 - STOP: To close the application

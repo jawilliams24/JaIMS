@@ -49,7 +49,7 @@ public enum Domain {
 	}
 
 	public String getDescription() {
-		return this.name() + ": " +this.description;
+		return description();
 	}
 
 	public void setDescription(String description) {
