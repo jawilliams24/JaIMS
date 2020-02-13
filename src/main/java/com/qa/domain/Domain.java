@@ -48,7 +48,7 @@ public enum Domain {
 		return domain;
 	}
 
-	public String getDescription() {
+	protected String getDescription() {
 		return description;
 	}
 
