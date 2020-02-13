@@ -52,7 +52,7 @@ public class MysqlOrderDao implements Dao<Order> {
 			return new Order(orderId, orderCost, customerId, discount);
 		} catch (SQLException e) {
 			LOGGER.debug(e.getStackTrace());
-		} 
+		}
 		return null;
 	}
 
@@ -62,8 +62,8 @@ public class MysqlOrderDao implements Dao<Order> {
 
 	public List<Order> readAll() {
 		try (Connection conn = DriverManager.getConnection(Config.getUrl(), Config.getUsername(), Config.getPassword());
-				Statement statement = conn.createStatement();) {
-			ResultSet resultSet = statement.executeQuery("SELECT * FROM orders");
+				Statement statement = conn.createStatement();
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM orders");) {
 
 			Utilities util = new Utilities();
 			String orderResults = util.resultSet_toString(resultSet);
@@ -83,8 +83,9 @@ public class MysqlOrderDao implements Dao<Order> {
 
 	public Order readLatest() {
 		try (Connection conn = DriverManager.getConnection(Config.getUrl(), Config.getUsername(), Config.getPassword());
-				Statement statement = conn.createStatement();) {
-			ResultSet resultSet = statement.executeQuery("SELECT * FROM orders ORDER BY order_id DESC LIMIT 1");
+				Statement statement = conn.createStatement();
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM orders ORDER BY order_id DESC LIMIT 1");) {
+
 			resultSet.next();
 			return orderFromResultSet(resultSet);
 		} catch (Exception e) {
@@ -105,7 +106,7 @@ public class MysqlOrderDao implements Dao<Order> {
 		ResultSet resultSet = null;
 		try (Connection conn = DriverManager.getConnection(Config.getUrl(), Config.getUsername(), Config.getPassword());
 				Statement statement = conn.createStatement();) {
-			
+
 			statement.executeUpdate(
 					"INSERT INTO orders(cost, customer_id, discount) VALUES(" + order.getOrderCost() + ","
 							+ order.getCustomerId() + "," + order.getDiscount() + ");",
@@ -159,9 +160,11 @@ public class MysqlOrderDao implements Dao<Order> {
 
 	public Order costCalculator(Order order) {
 		try (Connection conn = DriverManager.getConnection(Config.getUrl(), Config.getUsername(), Config.getPassword());
-				Statement statement = conn.createStatement();) {
-			ResultSet resultSet = statement.executeQuery(String.format(
-					"SELECT SUM(quantity * sold_cost) FROM itemorder WHERE order_id =" + order.getOrderId() + ";"));
+				Statement statement = conn.createStatement();
+				ResultSet resultSet = statement
+						.executeQuery(String.format("SELECT SUM(quantity * sold_cost) FROM itemorder WHERE order_id ="
+								+ order.getOrderId() + ";"));) {
+
 			resultSet.next();
 			order.setOrderCost(resultSet.getDouble(1));
 
@@ -169,13 +172,13 @@ public class MysqlOrderDao implements Dao<Order> {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
 
-		
 		}
 		return order;
 	}
 
 	public Order updateCost(Order order) {
-		try (Connection conn = DriverManager.getConnection(Config.getUrl(), Config.getUsername(), Config.getPassword())) {
+		try (Connection conn = DriverManager.getConnection(Config.getUrl(), Config.getUsername(),
+				Config.getPassword())) {
 			Order orderCost = costCalculator(order);
 			if (orderCost.getOrderCost() >= 10000) {
 
@@ -208,10 +211,12 @@ public class MysqlOrderDao implements Dao<Order> {
 
 	public Order readOrder(Long orderId) {
 		try (Connection conn = DriverManager.getConnection(Config.getUrl(), Config.getUsername(), Config.getPassword());
-				Statement statement = conn.createStatement();) {
-			ResultSet resultSet = statement.executeQuery("SELECT * FROM orders WHERE order_id = " + orderId);
+				Statement statement = conn.createStatement();
+		ResultSet resultSet = statement.executeQuery("SELECT * FROM orders WHERE order_id = " + orderId);){
+			
 			resultSet.next();
 			return orderFromResultSet(resultSet);
+			
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
@@ -252,8 +257,6 @@ public class MysqlOrderDao implements Dao<Order> {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
 		}
-
-
 	}
 
 	@Override
