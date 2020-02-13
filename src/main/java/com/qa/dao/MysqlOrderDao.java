@@ -140,8 +140,9 @@ public class MysqlOrderDao implements Dao<Order> {
 
 		}
 
-		return null;
+
 		}
+		return null;
 	}
 //			Long orderId = (long) resultSet.getInt(1);
 //			for (Item item : order.getItemsInOrder()) {
