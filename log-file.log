@@ -4127,3 +4127,18 @@ order_id = 1 cost = 15.0 customer_id = 2 discount = 15
 2020-02-13 16:22:43 INFO  CustomerController:64 - Please enter the id of the customer you would like to delete
 2020-02-13 16:22:43 INFO  CustomerController:67 - Customer successfully deleted.
 
+2020-02-13 16:52:03 INFO  CustomerController:36 - id:null first name:John surname:Smith
+2020-02-13 16:52:03 INFO  CustomerController:36 - id:null first name:Alex surname:Brown
+2020-02-13 16:52:03 INFO  CustomerController:36 - id:null first name:Simon surname:Jones
+2020-02-13 16:52:03 INFO  CustomerController:52 - Please enter the id of the customer you would like to update
+2020-02-13 16:52:03 INFO  CustomerController:54 - Please enter a first name
+2020-02-13 16:52:03 INFO  CustomerController:56 - Please enter a surname
+2020-02-13 16:52:03 INFO  CustomerController:59 - Customer successfully updated.
+
+2020-02-13 16:52:03 INFO  CustomerController:42 - Please enter a first name
+2020-02-13 16:52:03 INFO  CustomerController:44 - Please enter a surname
+2020-02-13 16:52:03 INFO  CustomerController:47 - Customer successfully created.
+
+2020-02-13 16:52:03 INFO  CustomerController:64 - Please enter the id of the customer you would like to delete
+2020-02-13 16:52:03 INFO  CustomerController:67 - Customer successfully deleted.
+
