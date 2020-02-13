@@ -50,7 +50,7 @@ public class OrderController implements CrudController<Order> {
 		ArrayList<Item> itemsInOrder = new ArrayList<>();
 		Long itemId = 0L;
 
-		while (true) {
+		while (itemId!=0) {
 			LOGGER.info(
 					"Please enter the ID of the item you wish to add to your order, or enter 0 to complete your order.");
 			itemId = Long.parseLong(getInput());
@@ -66,6 +66,8 @@ public class OrderController implements CrudController<Order> {
 		}
 		LOGGER.info("Order successfully created.\n");
 		return orderService.create(new Order(customerId, itemsInOrder));
+		
+		
 
 	}
 
@@ -92,5 +94,5 @@ public class OrderController implements CrudController<Order> {
 	public Order readSingle(Order t) {
 		return null;
 	}
-
+	
 }
