@@ -32,7 +32,7 @@ public class OrderController implements CrudController<Order> {
 		this.itemServices = new ItemServices(new MysqlItemDao());
 	}
 
-	String getInput() {
+	public String getInput() {
 		return Utilities.getInput();
 	}
 
