@@ -9,7 +9,6 @@ import java.util.ArrayList;
  *
  */
 
-
 public class Order {
 
 	private Long orderId;
@@ -17,30 +16,29 @@ public class Order {
 	private Long customerId;
 	private Double discount;
 	ArrayList<Item> itemsInOrder;
-	
+
 	public Order(Double orderCost, Long customerId, Double discount) {
 		this.orderCost = orderCost;
 		this.customerId = customerId;
 		this.discount = discount;
 	}
-	
+
 	public Order(Long orderId, Double orderCost, Long customerId, Double discount) {
 		this.orderId = orderId;
 		this.orderCost = orderCost;
 		this.customerId = customerId;
 		this.discount = discount;
 	}
-	
-	
+
 	public Order(Long customerId, ArrayList<Item> itemsInOrder) {
 		this.customerId = customerId;
 		this.itemsInOrder = itemsInOrder;
-	}	
+	}
 
 	public Order(Long orderId) {
 		this.orderId = orderId;
 	}
-	
+
 	public Long getOrderId() {
 		return orderId;
 	}
@@ -72,7 +70,7 @@ public class Order {
 	public void setDiscount(Double discount) {
 		this.discount = discount;
 	}
-	
+
 	public String toString() {
 		return "id:" + orderId + " order cost:" + orderCost + " customer id:" + customerId + " discount:" + discount;
 	}
@@ -85,6 +83,4 @@ public class Order {
 		this.itemsInOrder = itemsInOrder;
 	}
 
-
-	
 }

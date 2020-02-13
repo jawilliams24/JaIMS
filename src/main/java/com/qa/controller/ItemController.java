@@ -16,23 +16,23 @@ import com.qa.utils.Utilities;
  *
  */
 
-public class ItemController implements CrudController<Item>{
+public class ItemController implements CrudController<Item> {
 
 	public static final Logger LOGGER = Logger.getLogger(ItemController.class);
-	
+
 	private CrudServices<Item> itemService;
-	
+
 	public ItemController(CrudServices<Item> itemService) {
 		this.itemService = itemService;
 	}
-	
+
 	String getInput() {
 		return Utilities.getInput();
 	}
-	
+
 	public List<Item> readAll() {
 		List<Item> items = itemService.readAll();
-		for(Item item: items) {
+		for (Item item : items) {
 			LOGGER.info(item.toString());
 		}
 		return items;
@@ -65,12 +65,12 @@ public class ItemController implements CrudController<Item>{
 		Long itemId = Long.valueOf(getInput());
 		itemService.delete(itemId);
 		LOGGER.info("Item successfully deleted.\n");
-		
+
 	}
 
 	@Override
 	public Item readSingle(long item) {
 		return itemService.readSingle(item);
 	}
-	
+
 }

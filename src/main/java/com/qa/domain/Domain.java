@@ -5,37 +5,36 @@ import org.apache.log4j.Logger;
 import com.qa.utils.Utilities;
 
 /**
- * This enum is for the Domain, which asks the user which entity they'd like
- * to interact with.
+ * This enum is for the Domain, which asks the user which entity they'd like to
+ * interact with.
+ * 
  * @author James Williams
  *
  */
 
 public enum Domain {
 
-	CUSTOMER("Information about customers"),
-	ITEM("Individual Items"),
-	ORDER("Purchases of items"),
+	CUSTOMER("Information about customers"), ITEM("Individual Items"), ORDER("Purchases of items"),
 	STOP("To close the application");
-	
+
 	public static final Logger LOGGER = Logger.getLogger(Domain.class);
 
 	private String description;
-	
+
 	private Domain(String description) {
 		this.description = description;
 	}
-	
+
 	public String description() {
-		return this.name() + ": " +this.description;
+		return this.name() + ": " + this.description;
 	}
-	
+
 	public static void printDomains() {
 		for (Domain domain : Domain.values()) {
 			LOGGER.info(domain.description());
 		}
 	}
-	
+
 	public static Domain getDomain() {
 		Domain domain;
 		while (true) {
@@ -60,5 +59,5 @@ public enum Domain {
 	public static Logger getLogger() {
 		return LOGGER;
 	}
-	
+
 }

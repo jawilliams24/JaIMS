@@ -4,22 +4,21 @@ import java.util.List;
 
 import com.qa.dao.Dao;
 import com.qa.domain.Order;
+
 /**
- * This class runs the methods listed below to allow the user
- * to interact with the database's items table.
+ * This class runs the methods listed below to allow the user to interact with
+ * the database's items table.
+ * 
  * @author James Williams
  *
  */
 
-
 public class OrderServices implements CrudServices<Order> {
 	Dao<Order> orderDao;
-
 
 	public OrderServices(Dao<Order> orderDao) {
 		this.orderDao = orderDao;
 	}
-
 
 	@Override
 	public List<Order> readAll() {

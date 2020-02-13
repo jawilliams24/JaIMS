@@ -39,7 +39,7 @@ public class OrderController implements CrudController<Order> {
 	/**
 	 * This method reads all the orders in the database.
 	 */
-	
+
 	public List<Order> readAll() {
 		List<Order> orders = orderService.readAll();
 		for (Order order : orders) {
@@ -51,7 +51,7 @@ public class OrderController implements CrudController<Order> {
 	/**
 	 * This method is to allow users to create orders in the system.
 	 */
-	
+
 	public Order create() {
 		LOGGER.info("Please enter a customer ID: ");
 		Long customerId = Long.parseLong(getInput());
@@ -59,11 +59,12 @@ public class OrderController implements CrudController<Order> {
 		Long itemId = 0L;
 
 		/**
-		 * While loop to allow the user to add more than one item to the order at a time.
-		 * Currently SonarQube doesn't like this while loop or the break. It's also asking me
-		 * to put a finally statement in but I don't know what's supposed to go in that!
+		 * While loop to allow the user to add more than one item to the order at a
+		 * time. Currently SonarQube doesn't like this while loop or the break. It's
+		 * also asking me to put a finally statement in but I don't know what's supposed
+		 * to go in that!
 		 */
-		
+
 		while (true) {
 			LOGGER.info(
 					"Please enter the ID of the item you wish to add to your order, or enter 0 to complete your order.");
@@ -71,7 +72,7 @@ public class OrderController implements CrudController<Order> {
 			if (itemId == 0) {
 				break;
 			}
-			ItemController itemController = new ItemController(itemServices);		
+			ItemController itemController = new ItemController(itemServices);
 			Item item = itemController.readSingle(itemId);
 			LOGGER.info("Please enter how many of this item you want: ");
 			Long thing = Long.parseLong(getInput());
