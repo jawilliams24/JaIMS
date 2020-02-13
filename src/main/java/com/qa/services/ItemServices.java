@@ -40,4 +40,9 @@ public class ItemServices implements CrudServices<Item> {
 		itemDao.delete(id);
 	}
 
+	@Override
+	public Item readSingle(Item item) {
+		return itemDao.readSingle(item);
+	}
+
 }

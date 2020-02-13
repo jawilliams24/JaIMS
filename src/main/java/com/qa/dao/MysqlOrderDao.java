@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.log4j.Logger;
+
+import com.qa.domain.Item;
 import com.qa.domain.Order;
 import com.qa.utils.Config;
 import com.qa.utils.Utilities;
@@ -29,7 +31,7 @@ public class MysqlOrderDao implements Dao<Order> {
 	/**
 	 * Connects the program to the database.
 	 */
-	
+
 	public MysqlOrderDao() {
 		LOGGER.info("Connecting database...");
 		try {
@@ -44,18 +46,19 @@ public class MysqlOrderDao implements Dao<Order> {
 
 	/**
 	 * Converts the returns the resultSet as an order.
+	 * 
 	 * @param resultSet
 	 * 
 	 */
-	
+
 	Order orderFromResultSet(ResultSet resultSet) {
 		try {
-		
-		Long orderId = resultSet.getLong("order_id");
-		float orderCost = resultSet.getFloat("cost");
-		Long customerId = resultSet.getLong("customer_id");
-		Long discount = resultSet.getLong("discount");
-		return new Order(orderId, orderCost, customerId, discount);
+
+			Long orderId = resultSet.getLong("order_id");
+			float orderCost = resultSet.getFloat("cost");
+			Long customerId = resultSet.getLong("customer_id");
+			Long discount = resultSet.getLong("discount");
+			return new Order(orderId, orderCost, customerId, discount);
 		} catch (SQLException e) {
 			LOGGER.debug(e.getStackTrace());
 		} finally {
@@ -67,7 +70,7 @@ public class MysqlOrderDao implements Dao<Order> {
 	/**
 	 * Reads all items from the database.
 	 */
-	
+
 	public List<Order> readAll() {
 		try {
 			statement = conn.createStatement();
@@ -88,10 +91,10 @@ public class MysqlOrderDao implements Dao<Order> {
 	}
 
 	/**
-	 * Reads the latest item from the database. 
+	 * Reads the latest item from the database.
 	 * 
 	 */
-	
+
 	public Order readLatest() {
 		try {
 			statement = conn.createStatement();
@@ -110,14 +113,22 @@ public class MysqlOrderDao implements Dao<Order> {
 	}
 
 	/**
-	 * Allows the user to create an item, ignoring ID since that is auto-incremented.
+	 * Allows the user to create an item, ignoring ID since that is
+	 * auto-incremented.
 	 */
-	
+
 	public Order create(Order order) {
 		try {
 			statement = conn.createStatement();
-			statement.executeUpdate("INSERT INTO orders(cost, customer_id, discount) VALUES('" + order.getOrderCost()
-					+ "'," + order.getCustomerId() + "," + order.getDiscount() + ");");
+			statement.executeUpdate("INSERT INTO orders(customer_id, cost, discount) VALUES(null,'" + order.getCustomerId()
+									+ order.getOrderCost() + "," + order.getDiscount() + ");", statement.RETURN_GENERATED_KEYS);
+			ResultSet resultSet = statement.getGeneratedKeys();
+			resultSet.next();
+			Long orderId = (long) resultSet.getInt(1);
+			for (Item item : order.getItemsInOrder()) {
+				addItemToOrder(orderId, item);
+				break;
+			}
 			return readLatest();
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
@@ -131,12 +142,51 @@ public class MysqlOrderDao implements Dao<Order> {
 		return null;
 	}
 
+	public Order addItemToOrder(Long orderId, Item item) {
+		try {
+			statement = conn.createStatement();
+			statement.executeUpdate(String.format("INSERT INTO item_order VALUES(null," + orderId + ","
+					+ item.getItemId() + "," + item.getItemValue() + "," + item.getItemQuantity() + ");"));
+
+		} catch (Exception e) {
+			LOGGER.debug(e.getStackTrace());
+			LOGGER.error(e.getMessage());
+
+		} finally {
+			close();
+		}
+
+		return null;
+
+	}
+	
+	public Order costCalculator(Order order) {
+		try {
+			statement = conn.createStatement();
+			resultSet = statement.executeQuery(String.format(
+					"SELECT SUM(item_quantity * sold_cost) FROM itemorder WHERE order_id =" + order.getOrderId() + ");"));
+			resultSet.next();
+			order.setOrderCost(resultSet.getFloat(1));
+
+		} catch (Exception e) {
+			LOGGER.debug(e.getStackTrace());
+			LOGGER.error(e.getMessage());
+
+		} finally {
+			close();
+		}
+
+		return order;
+
+	}
+
 	/**
 	 * Allows the user to read an item from the database.
+	 * 
 	 * @param itemId
 	 * 
 	 */
-	
+
 	public Order readOrder(Long orderId) {
 		try {
 			statement = conn.createStatement();
@@ -158,12 +208,13 @@ public class MysqlOrderDao implements Dao<Order> {
 	/**
 	 * Enables the UPDATE item functionality.
 	 */
-	
+
 	public Order update(Order order) {
 		try {
 			statement = conn.createStatement();
-			statement.executeUpdate("UPDATE orders SET cost ='" + order.getOrderCost() + "', customer_id ="
-					+ order.getCustomerId() + ", discount =" + order.getDiscount() + " WHERE order_id =" + order.getOrderId() + ";");
+			statement.executeUpdate("UPDATE orders SET cost ='" + order.getOrderCost() + ", discount ="
+					+ order.getDiscount() + ", item_quantity =" + order.getItemsInOrder() + " WHERE order_id ="
+					+ order.getOrderId() + ";");
 			return readOrder(order.getOrderId());
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
@@ -180,7 +231,7 @@ public class MysqlOrderDao implements Dao<Order> {
 	/**
 	 * Enables the DELETE item functionality.
 	 */
-	
+
 	public void delete(long orderId) {
 		try {
 			statement = conn.createStatement();
@@ -199,7 +250,7 @@ public class MysqlOrderDao implements Dao<Order> {
 	/**
 	 * Useful close method to automatically close the connection when finished.
 	 */
-	
+
 	public void close() {
 		try {
 			if (statement != null)
@@ -215,6 +266,11 @@ public class MysqlOrderDao implements Dao<Order> {
 			LOGGER.debug(se.getStackTrace());
 		}
 
+	}
+
+	@Override
+	public Order readSingle(Order t) {
+		return null;
 	}
 
 }
