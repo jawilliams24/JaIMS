@@ -40,10 +40,16 @@ public class Item {
 		this.itemValue = itemValue;
 	}
 	
-	public Item(Long id) {
-		this.itemId = id;
+	public Item(Long itemId) {
+		this.itemId = itemId;	
 	}
 
+	public Item(Long itemId, Long itemQuantity) {
+		this.itemId = itemId;
+		this.itemQuantity = itemQuantity;
+	}
+
+	
 	/**
 	 * Getters and Setters for Item parameters.
 	 * 

@@ -8,6 +8,8 @@ import org.apache.log4j.Logger;
 import com.qa.domain.Item;
 import com.qa.domain.Order;
 import com.qa.services.CrudServices;
+import com.qa.services.ItemServices;
+import com.qa.dao.MysqlItemDao;
 import com.qa.utils.Utilities;
 
 /**
@@ -18,27 +20,25 @@ import com.qa.utils.Utilities;
  *
  */
 
-
-
-public class OrderController implements CrudController<Order>{
+public class OrderController implements CrudController<Order> {
 
 	public static final Logger LOGGER = Logger.getLogger(OrderController.class);
-	
+
 	private CrudServices<Order> orderService;
-	private CrudServices<Item> itemService;
-	
+	private CrudServices<Item> itemServices;
+
 	public OrderController(CrudServices<Order> orderService) {
 		this.orderService = orderService;
-		this.itemService = itemService;
+		this.itemServices = new ItemServices(new MysqlItemDao());
 	}
-	
+
 	String getInput() {
 		return Utilities.getInput();
 	}
-	
+
 	public List<Order> readAll() {
 		List<Order> orders = orderService.readAll();
-		for(Order order: orders) {
+		for (Order order : orders) {
 			LOGGER.info(order.toString());
 		}
 		return orders;
@@ -49,21 +49,22 @@ public class OrderController implements CrudController<Order>{
 		Long customerId = Long.parseLong(getInput());
 		ArrayList<Item> itemsInOrder = new ArrayList<>();
 		Long itemId = 0L;
-		
-		while(true) {
-			LOGGER.info("Please enter the ID of the item you wish to add to your order, or enter -1 to complete your order.");
+
+		while (true) {
+			LOGGER.info(
+					"Please enter the ID of the item you wish to add to your order, or enter 0 to complete your order.");
 			itemId = Long.parseLong(getInput());
-			if(itemId==-1) {
+			if (itemId == 0) {
 				break;
 			}
-			ItemController itemController = new ItemController(itemService);
-			Item item = itemController.readSingle(new Item(itemId));		
+			ItemController itemController = new ItemController(itemServices);
+			Item item = itemController.readSingle(new Item(itemId));
 			LOGGER.info("Please enter how many of this item you want: ");
 			item.setItemQuantity(Long.parseLong(getInput()));
 			itemsInOrder.add(item);
-			
+
 		}
-		
+		LOGGER.info("Order successfully created.\n");
 		return orderService.create(new Order(customerId, itemsInOrder));
 
 	}
@@ -81,7 +82,7 @@ public class OrderController implements CrudController<Order>{
 	}
 
 	public void delete() {
-		LOGGER.info("Please enter the id of the order you would like to delete");
+		LOGGER.info("Please enter the id of the order you would like to delete: ");
 		Long orderId = Long.valueOf(getInput());
 		orderService.delete(orderId);
 		LOGGER.info("Order successfully deleted.\n");
@@ -91,5 +92,5 @@ public class OrderController implements CrudController<Order>{
 	public Order readSingle(Order t) {
 		return null;
 	}
-	
+
 }

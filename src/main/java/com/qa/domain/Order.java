@@ -34,8 +34,7 @@ public class Order {
 	public Order(Long customerId, ArrayList<Item> itemsInOrder) {
 		this.customerId = customerId;
 		this.itemsInOrder = itemsInOrder;
-	}
-	
+	}	
 
 	public Order(Long orderId) {
 		this.orderId = orderId;
