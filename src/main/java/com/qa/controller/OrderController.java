@@ -55,7 +55,6 @@ public class OrderController implements CrudController<Order> {
 					"Please enter the ID of the item you wish to add to your order, or enter 0 to complete your order.");
 			itemId = Long.parseLong(getInput());
 			if (itemId == 0) {
-				break;
 			}
 			ItemController itemController = new ItemController(itemServices);
 			Item item = itemController.readSingle(new Item(itemId));
