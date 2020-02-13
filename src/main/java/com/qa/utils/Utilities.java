@@ -3,7 +3,12 @@ package com.qa.utils;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Scanner;
+
+import org.apache.log4j.Logger;
+
+import com.qa.dao.MysqlOrderDao;
 
 /**
  * In this Utilities class, I have set out a simple scanner method to
@@ -17,6 +22,8 @@ import java.util.Scanner;
  */
 
 public class Utilities {
+	
+	public static final Logger LOGGER = Logger.getLogger(Utilities.class);
 	
 	public static String getInput() {
 		@SuppressWarnings("resource")
@@ -41,7 +48,7 @@ public class Utilities {
 		}
 		return Result;
 	}
-
+	
 }
 	
 

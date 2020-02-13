@@ -36,6 +36,10 @@ public class OrderController implements CrudController<Order> {
 		return Utilities.getInput();
 	}
 
+	/**
+	 * This method reads all the orders in the database.
+	 */
+	
 	public List<Order> readAll() {
 		List<Order> orders = orderService.readAll();
 		for (Order order : orders) {
@@ -44,19 +48,41 @@ public class OrderController implements CrudController<Order> {
 		return orders;
 	}
 
+	/**
+	 * This method is to allow users to create orders in the system.
+	 */
+	
 	public Order create() {
 		LOGGER.info("Please enter a customer ID: ");
 		Long customerId = Long.parseLong(getInput());
 		ArrayList<Item> itemsInOrder = new ArrayList<>();
 		Long itemId = 0L;
 
-		while (itemId!=0) {
+		/**
+		 * While loop to allow the user to add more than one item to the order at a time.
+		 * Currently SonarQube doesn't like this while loop or the break. It's also asking me
+		 * to put a finally statement in but I don't know what's supposed to go in that!
+		 */
+		
+		while (true) {
 			LOGGER.info(
 					"Please enter the ID of the item you wish to add to your order, or enter 0 to complete your order.");
 			itemId = Long.parseLong(getInput());
 			if (itemId == 0) {
+				break;
 			}
 			ItemController itemController = new ItemController(itemServices);
+//			try {
+//				Item item = itemController.readSingle(new Item(itemId));
+//				if (item.getItemId()>0) {
+//					LOGGER.info("Please enter how many of this item you want: ");
+//					item.setItemQuantity(Long.parseLong(getInput()));							// Gives NullPointerException
+//					itemsInOrder.add(item);
+//				}
+//			} catch (Exception e) {
+//			LOGGER.debug(e.getStackTrace());
+//			LOGGER.error(e.getMessage());
+		
 			Item item = itemController.readSingle(new Item(itemId));
 			LOGGER.info("Please enter how many of this item you want: ");
 			item.setItemQuantity(Long.parseLong(getInput()));
@@ -65,8 +91,6 @@ public class OrderController implements CrudController<Order> {
 		}
 		LOGGER.info("Order successfully created.\n");
 		return orderService.create(new Order(customerId, itemsInOrder));
-		
-		
 
 	}
 
@@ -93,5 +117,5 @@ public class OrderController implements CrudController<Order> {
 	public Order readSingle(Order t) {
 		return null;
 	}
-	
+
 }
