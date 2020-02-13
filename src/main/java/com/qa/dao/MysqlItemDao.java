@@ -51,7 +51,7 @@ public class MysqlItemDao implements Dao<Item> {
 	 */
 
 	public List<Item> readAll() {
-		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+		try (Connection conn = DriverManager.getConnection(Config.getUrl(), Config.getUsername(), Config.getPassword());
 				Statement statement = conn.createStatement();
 				ResultSet resultSet = statement.executeQuery("SELECT * FROM items");) {
 			ArrayList<Item> items = new ArrayList<>();
@@ -76,7 +76,7 @@ public class MysqlItemDao implements Dao<Item> {
 	 */
 
 	public Item readLatest() {
-		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+		try (Connection conn = DriverManager.getConnection(Config.getUrl(), Config.getUsername(), Config.getPassword());
 				Statement statement = conn.createStatement();
 				ResultSet resultSet = statement.executeQuery("SELECT * FROM items ORDER BY item_id DESC LIMIT 1");) {
 			resultSet.next();
@@ -98,7 +98,7 @@ public class MysqlItemDao implements Dao<Item> {
 	 */
 
 	public Item create(Item item) {
-		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+		try (Connection conn = DriverManager.getConnection(Config.getUrl(), Config.getUsername(), Config.getPassword());
 				Statement statement = conn.createStatement();) {
 			statement.executeUpdate("INSERT INTO items(item_name, item_value) VALUES('" + item.getItemName() + "',"
 					+ item.getItemValue() + ");");
@@ -120,7 +120,7 @@ public class MysqlItemDao implements Dao<Item> {
 	 */
 
 	public Item readSingle(long itemId) {
-		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+		try (Connection conn = DriverManager.getConnection(Config.getUrl(), Config.getUsername(), Config.getPassword());
 				Statement statement = conn.createStatement();
 				ResultSet resultSet = statement.executeQuery("SELECT * FROM items WHERE item_id = " + itemId + ";");) {
 			resultSet.next();
@@ -142,7 +142,7 @@ public class MysqlItemDao implements Dao<Item> {
 
 	public Item update(Item item) {
 
-		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+		try (Connection conn = DriverManager.getConnection(Config.getUrl(), Config.getUsername(), Config.getPassword());
 				Statement statement = conn.createStatement();) {
 			statement.executeUpdate("UPDATE items SET item_name ='" + item.getItemName() + "', item_value ="
 					+ item.getItemValue() + " WHERE item_id =" + item.getItemId() + ";");
@@ -161,7 +161,7 @@ public class MysqlItemDao implements Dao<Item> {
 	 */
 
 	public void delete(long itemId) {
-		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+		try (Connection conn = DriverManager.getConnection(Config.getUrl(), Config.getUsername(), Config.getPassword());
 				Statement statement = conn.createStatement();) {
 			statement.executeUpdate("DELETE FROM items WHERE item_id = " + itemId);
 		} catch (SQLException e) {
