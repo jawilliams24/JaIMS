@@ -4463,3 +4463,121 @@ customer_id = 5 first_name = Juamal surname = Blackman
 2020-02-13 19:33:52 INFO  Domain:34 - ITEM: Individual Items
 2020-02-13 19:33:52 INFO  Domain:34 - ORDER: Purchases of items
 2020-02-13 19:33:52 INFO  Domain:34 - STOP: To close the application
+2020-02-13 19:52:04 INFO  CustomerController:36 - id:null first name:John surname:Smith
+2020-02-13 19:52:04 INFO  CustomerController:36 - id:null first name:Alex surname:Brown
+2020-02-13 19:52:04 INFO  CustomerController:36 - id:null first name:Simon surname:Jones
+2020-02-13 19:52:04 INFO  CustomerController:52 - Please enter the id of the customer you would like to update
+2020-02-13 19:52:04 INFO  CustomerController:54 - Please enter a first name
+2020-02-13 19:52:04 INFO  CustomerController:56 - Please enter a surname
+2020-02-13 19:52:04 INFO  CustomerController:59 - Customer successfully updated.
+
+2020-02-13 19:52:04 INFO  CustomerController:42 - Please enter a first name
+2020-02-13 19:52:04 INFO  CustomerController:44 - Please enter a surname
+2020-02-13 19:52:04 INFO  CustomerController:47 - Customer successfully created.
+
+2020-02-13 19:52:04 INFO  CustomerController:64 - Please enter the id of the customer you would like to delete
+2020-02-13 19:52:04 INFO  CustomerController:67 - Customer successfully deleted.
+
+2020-02-13 20:14:38 INFO  ItemController:36 - id:null item name:Apple quantity:null item value:40.0
+2020-02-13 20:14:38 INFO  ItemController:36 - id:null item name:Orange quantity:null item value:30.0
+2020-02-13 20:14:38 INFO  ItemController:36 - id:null item name:Banana quantity:null item value:20.0
+2020-02-13 20:20:19 INFO  ItemController:36 - id:null item name:Apple quantity:null item value:40.0
+2020-02-13 20:20:19 INFO  ItemController:36 - id:null item name:Orange quantity:null item value:30.0
+2020-02-13 20:20:19 INFO  ItemController:36 - id:null item name:Banana quantity:null item value:20.0
+2020-02-13 20:20:19 INFO  ItemController:52 - Please enter the id of the item you would like to update
+2020-02-13 20:20:19 INFO  ItemController:54 - Please enter a item name
+2020-02-13 20:20:19 INFO  ItemController:56 - Please enter a item value
+2020-02-13 20:20:19 INFO  ItemController:59 - Item successfully updated.
+
+2020-02-13 20:20:19 INFO  ItemController:42 - Please enter a item name
+2020-02-13 20:20:19 INFO  ItemController:44 - Please enter a item value
+2020-02-13 20:20:19 INFO  ItemController:47 - Item successfully created.
+
+2020-02-13 20:20:19 INFO  ItemController:64 - Please enter the id of the item you would like to delete
+2020-02-13 20:20:19 INFO  ItemController:67 - Item successfully deleted.
+
+2020-02-13 20:23:28 INFO  ItemController:36 - id:null item name:Apple quantity:null item value:40.0
+2020-02-13 20:23:28 INFO  ItemController:36 - id:null item name:Orange quantity:null item value:30.0
+2020-02-13 20:23:28 INFO  ItemController:36 - id:null item name:Banana quantity:null item value:20.0
+2020-02-13 20:23:28 INFO  ItemController:52 - Please enter the id of the item you would like to update
+2020-02-13 20:23:28 INFO  ItemController:54 - Please enter a item name
+2020-02-13 20:23:28 INFO  ItemController:56 - Please enter a item value
+2020-02-13 20:23:28 INFO  ItemController:59 - Item successfully updated.
+
+2020-02-13 20:23:28 INFO  ItemController:42 - Please enter a item name
+2020-02-13 20:23:28 INFO  ItemController:44 - Please enter a item value
+2020-02-13 20:23:28 INFO  ItemController:47 - Item successfully created.
+
+2020-02-13 20:23:28 INFO  ItemController:64 - Please enter the id of the item you would like to delete
+2020-02-13 20:23:28 INFO  ItemController:67 - Item successfully deleted.
+
+2020-02-13 20:23:52 INFO  CustomerController:36 - id:null first name:John surname:Smith
+2020-02-13 20:23:52 INFO  CustomerController:36 - id:null first name:Alex surname:Brown
+2020-02-13 20:23:52 INFO  CustomerController:36 - id:null first name:Simon surname:Jones
+2020-02-13 20:23:52 INFO  CustomerController:52 - Please enter the id of the customer you would like to update
+2020-02-13 20:23:52 INFO  CustomerController:54 - Please enter a first name
+2020-02-13 20:23:52 INFO  CustomerController:56 - Please enter a surname
+2020-02-13 20:23:52 INFO  CustomerController:59 - Customer successfully updated.
+
+2020-02-13 20:23:52 INFO  CustomerController:42 - Please enter a first name
+2020-02-13 20:23:52 INFO  CustomerController:44 - Please enter a surname
+2020-02-13 20:23:52 INFO  CustomerController:47 - Customer successfully created.
+
+2020-02-13 20:23:52 INFO  CustomerController:64 - Please enter the id of the customer you would like to delete
+2020-02-13 20:23:52 INFO  CustomerController:67 - Customer successfully deleted.
+
+2020-02-13 20:25:18 INFO  ItemController:36 - id:null item name:Apple quantity:null item value:40.0
+2020-02-13 20:25:18 INFO  ItemController:36 - id:null item name:Orange quantity:null item value:30.0
+2020-02-13 20:25:18 INFO  ItemController:36 - id:null item name:Banana quantity:null item value:20.0
+2020-02-13 20:25:18 INFO  ItemController:52 - Please enter the id of the item you would like to update
+2020-02-13 20:25:18 INFO  ItemController:54 - Please enter a item name
+2020-02-13 20:25:18 INFO  ItemController:56 - Please enter a item value
+2020-02-13 20:25:18 INFO  ItemController:59 - Item successfully updated.
+
+2020-02-13 20:25:18 INFO  ItemController:42 - Please enter a item name
+2020-02-13 20:25:18 INFO  ItemController:44 - Please enter a item value
+2020-02-13 20:25:18 INFO  ItemController:47 - Item successfully created.
+
+2020-02-13 20:25:18 INFO  ItemController:64 - Please enter the id of the item you would like to delete
+2020-02-13 20:25:18 INFO  ItemController:67 - Item successfully deleted.
+
+2020-02-13 20:26:08 INFO  ItemController:36 - id:null item name:Apple quantity:null item value:40.0
+2020-02-13 20:26:08 INFO  ItemController:36 - id:null item name:Orange quantity:null item value:30.0
+2020-02-13 20:26:08 INFO  ItemController:36 - id:null item name:Banana quantity:null item value:20.0
+2020-02-13 20:26:08 INFO  ItemController:42 - Please enter a item name
+2020-02-13 20:26:08 INFO  ItemController:44 - Please enter a item value
+2020-02-13 20:26:08 INFO  ItemController:47 - Item successfully created.
+
+2020-02-13 20:26:08 INFO  ItemController:64 - Please enter the id of the item you would like to delete
+2020-02-13 20:26:08 INFO  ItemController:67 - Item successfully deleted.
+
+2020-02-13 20:27:02 INFO  ItemController:36 - id:null item name:Apple quantity:null item value:40.0
+2020-02-13 20:27:02 INFO  ItemController:36 - id:null item name:Orange quantity:null item value:30.0
+2020-02-13 20:27:02 INFO  ItemController:36 - id:null item name:Banana quantity:null item value:20.0
+2020-02-13 20:27:02 INFO  ItemController:52 - Please enter the id of the item you would like to update
+2020-02-13 20:27:02 INFO  ItemController:54 - Please enter a item name
+2020-02-13 20:27:02 INFO  ItemController:56 - Please enter a item value
+2020-02-13 20:27:02 INFO  ItemController:59 - Item successfully updated.
+
+2020-02-13 20:27:02 INFO  ItemController:42 - Please enter a item name
+2020-02-13 20:27:02 INFO  ItemController:44 - Please enter a item value
+2020-02-13 20:27:02 INFO  ItemController:47 - Item successfully created.
+
+2020-02-13 20:27:02 INFO  ItemController:64 - Please enter the id of the item you would like to delete
+2020-02-13 20:27:02 INFO  ItemController:67 - Item successfully deleted.
+
+2020-02-13 20:27:25 INFO  CustomerController:36 - id:null first name:John surname:Smith
+2020-02-13 20:27:25 INFO  CustomerController:36 - id:null first name:Alex surname:Brown
+2020-02-13 20:27:25 INFO  CustomerController:36 - id:null first name:Simon surname:Jones
+2020-02-13 20:27:25 INFO  CustomerController:52 - Please enter the id of the customer you would like to update
+2020-02-13 20:27:25 INFO  CustomerController:54 - Please enter a first name
+2020-02-13 20:27:25 INFO  CustomerController:56 - Please enter a surname
+2020-02-13 20:27:25 INFO  CustomerController:59 - Customer successfully updated.
+
+2020-02-13 20:27:25 INFO  CustomerController:42 - Please enter a first name
+2020-02-13 20:27:25 INFO  CustomerController:44 - Please enter a surname
+2020-02-13 20:27:25 INFO  CustomerController:47 - Customer successfully created.
+
+2020-02-13 20:27:25 INFO  CustomerController:64 - Please enter the id of the customer you would like to delete
+2020-02-13 20:27:25 INFO  CustomerController:67 - Customer successfully deleted.
+

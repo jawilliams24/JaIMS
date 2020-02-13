@@ -26,7 +26,7 @@ public class ItemController implements CrudController<Item> {
 		this.itemService = itemService;
 	}
 
-	String getInput() {
+	public String getInput() {
 		return Utilities.getInput();
 	}
 
