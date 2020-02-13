@@ -58,12 +58,6 @@ public class OrderController implements CrudController<Order> {
 		ArrayList<Item> itemsInOrder = new ArrayList<>();
 		Long itemId = 0L;
 
-		/**
-		 * While loop to allow the user to add more than one item to the order at a
-		 * time. Currently SonarQube doesn't like this while loop or the break. It's
-		 * also asking me to put a finally statement in but I don't know what's supposed
-		 * to go in that!
-		 */
 
 		while (true) {
 			LOGGER.info(
@@ -87,15 +81,7 @@ public class OrderController implements CrudController<Order> {
 
 	public Order update(Order order) {
 		return orderService.update(order);
-//		LOGGER.info("Please enter the id of the order you would like to update: ");
-//		Long orderId = Long.valueOf(getInput());
-//		LOGGER.info("Please enter the id of the item you would like to update: ");
-//		Long itemId = Long.parseLong(getInput());
-//		LOGGER.info("Please enter the new item quantity;");
-//		Long itemQuantity = Long.parseLong(getInput());
-//		Order order = orderService.update(new Order(orderId, itemId, itemQuantity));
-//		LOGGER.info("Order successfully updated.\n");
-//		return order;
+
 	}
 
 	public void delete() {
