@@ -141,7 +141,7 @@ public class MysqlItemDao implements Dao<Item> {
 	 */
 
 	public Item update(Item item) {
-		
+
 		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
 				Statement statement = conn.createStatement();) {
 			statement.executeUpdate("UPDATE items SET item_name ='" + item.getItemName() + "', item_value ="
@@ -171,7 +171,5 @@ public class MysqlItemDao implements Dao<Item> {
 			LOGGER.error(e.getMessage());
 		}
 	}
-
-
 
 }

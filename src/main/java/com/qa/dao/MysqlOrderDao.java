@@ -15,7 +15,7 @@ import com.qa.utils.Config;
 import com.qa.utils.Utilities;
 
 ///**
-// * This class is my DAO for the Items table
+// * This class is my DAO for the Orders table
 // * @author James Williams
 // *
 // */
@@ -113,8 +113,10 @@ public class MysqlOrderDao implements Dao<Order> {
 	public Order create(Order order) {
 		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
 				Statement statement = conn.createStatement();) {
-			statement.executeUpdate("INSERT INTO orders(cost, customer_id, discount) VALUES(" +
-					order.getOrderCost() + "," + order.getCustomerId() + "," + order.getDiscount() + ");", Statement.RETURN_GENERATED_KEYS);
+			statement.executeUpdate(
+					"INSERT INTO orders(cost, customer_id, discount) VALUES(" + order.getOrderCost() + ","
+							+ order.getCustomerId() + "," + order.getDiscount() + ");",
+					Statement.RETURN_GENERATED_KEYS);
 			resultSet = statement.getGeneratedKeys();
 			resultSet.next();
 			order.setOrderId((long) resultSet.getInt(1));
@@ -137,29 +139,11 @@ public class MysqlOrderDao implements Dao<Order> {
 			} catch (Exception e) {
 				LOGGER.debug(e.getStackTrace());
 				LOGGER.error(e.getMessage());
-
-		}
-
+			}
 
 		}
 		return null;
 	}
-//			Long orderId = (long) resultSet.getInt(1);
-//			for (Item item : order.getItemsInOrder()) {
-//				addItemToOrder(orderId, item);
-//			}
-//			return readLatest();
-//		} catch (Exception e) {
-//			LOGGER.debug(e.getStackTrace());
-//			LOGGER.error(e.getMessage());
-//		}
-//
-//		finally {
-//			close();
-//		}
-//
-//		return null;
-	
 
 	public Order addItemToOrder(Order order) {
 		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
@@ -186,9 +170,8 @@ public class MysqlOrderDao implements Dao<Order> {
 	public Order costCalculator(Order order) {
 		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
 				Statement statement = conn.createStatement();) {
-			resultSet = statement
-					.executeQuery(String.format("SELECT SUM(quantity * sold_cost) FROM itemorder WHERE order_id ="
-							+ order.getOrderId() + ";"));
+			resultSet = statement.executeQuery(String.format(
+					"SELECT SUM(quantity * sold_cost) FROM itemorder WHERE order_id =" + order.getOrderId() + ";"));
 			resultSet.next();
 			order.setOrderCost(resultSet.getDouble(1));
 
@@ -215,8 +198,9 @@ public class MysqlOrderDao implements Dao<Order> {
 			}
 
 			try (Statement statement = conn.createStatement()) {
-				statement.executeUpdate(String.format("UPDATE orders SET cost = '%s', discount = '%s' WHERE order_id='%s';",
-						orderCost.getOrderCost(), orderCost.getDiscount(), orderCost.getOrderId()));
+				statement.executeUpdate(
+						String.format("UPDATE orders SET cost = '%s', discount = '%s' WHERE order_id='%s';",
+								orderCost.getOrderCost(), orderCost.getDiscount(), orderCost.getOrderId()));
 			}
 
 		} catch (Exception e) {

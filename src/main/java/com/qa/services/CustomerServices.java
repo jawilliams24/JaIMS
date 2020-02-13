@@ -6,8 +6,9 @@ import com.qa.dao.Dao;
 import com.qa.domain.Customer;
 
 /**
- * This class runs the methods listed below to allow the user
- * to interact with the database's customers table.
+ * This class runs the methods listed below to allow the user to interact with
+ * the database's customers table.
+ * 
  * @author James Williams
  *
  */
@@ -15,11 +16,11 @@ import com.qa.domain.Customer;
 public class CustomerServices implements CrudServices<Customer> {
 
 	Dao<Customer> customerDao;
-	
+
 	public CustomerServices(Dao<Customer> customerDao) {
 		this.customerDao = customerDao;
 	}
-	
+
 	@Override
 	public List<Customer> readAll() {
 		return customerDao.readAll();

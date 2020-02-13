@@ -15,10 +15,11 @@ public class Customer {
 
 	/**
 	 * Constructor for creating new customers.
+	 * 
 	 * @param firstName
 	 * @param surname
 	 */
-	
+
 	public Customer(String firstName, String surname) {
 		this.firstName = firstName;
 		this.surname = surname;
@@ -26,11 +27,12 @@ public class Customer {
 
 	/**
 	 * Constructor for reading customers.
+	 * 
 	 * @param id
 	 * @param firstName
 	 * @param surname
 	 */
-	
+
 	public Customer(Long id, String firstName, String surname) {
 		this.id = id;
 		this.firstName = firstName;
@@ -107,5 +109,4 @@ public class Customer {
 		return true;
 	}
 
-	
 }
