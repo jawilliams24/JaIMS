@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -36,11 +35,6 @@ public class CustomerControllerTest {
 	@InjectMocks
 	private CustomerController customerController;
 
-//	@Before
-//	public void setUp() {
-//		customer = new Customer(1L, "Chris", "Perrins");
-//		other = new Customer(1L, "Chris", "Perrins");
-//	}
 	
 	@Test
 	public void createTest() {
@@ -90,6 +84,7 @@ public class CustomerControllerTest {
 		String id = "1";
 		Mockito.doReturn(id).when(customerController).getInput();
 		customerController.delete();
+		Mockito.verify(customerServices, Mockito.times(1)).delete(1L);
 	}
 
 }

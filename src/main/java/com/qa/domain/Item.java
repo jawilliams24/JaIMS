@@ -12,7 +12,7 @@ public class Item {
 	private Long itemId;
 	private String itemName;
 	private Long itemQuantity;
-	private float itemValue;
+	private Float itemValue;
 
 	/**
 	 * Constructor for creating new items.
@@ -22,7 +22,7 @@ public class Item {
 	 * @param itemQuantity
 	 */
 
-	public Item(String itemName, float itemValue) {
+	public Item(String itemName, Float itemValue) {
 		this.itemName = itemName;
 		this.itemValue = itemValue;
 	}
@@ -36,7 +36,7 @@ public class Item {
 	 * @param itemQuantity
 	 */
 
-	public Item(Long itemId, String itemName, float itemValue) {
+	public Item(Long itemId, String itemName, Float itemValue) {
 		this.itemId = itemId;
 		this.itemName = itemName;
 		this.itemValue = itemValue;
@@ -49,6 +49,17 @@ public class Item {
 	public Item(Long itemId, Long itemQuantity) {
 		this.itemId = itemId;
 		this.itemQuantity = itemQuantity;
+	}
+
+	public Item(Long itemId, String itemName, Float itemValue, Long itemQuantity) {
+		this.itemId = itemId;
+		this.itemName = itemName;
+		this.itemValue = itemValue;
+		this.itemQuantity = itemQuantity;
+	}
+	
+	public Item(String itemName, Float itemValue, Long itemQuantity) {
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -80,16 +91,59 @@ public class Item {
 		this.itemQuantity = itemQuantity;
 	}
 
-	public float getItemValue() {
+	public Float getItemValue() {
 		return itemValue;
 	}
 
-	public void setItemValue(float itemValue) {
+	public void setItemValue(Float itemValue) {
 		this.itemValue = itemValue;
 	}
 
 	public String toString() {
 		return "id:" + itemId + " item name:" + itemName + " quantity:" + itemQuantity + " item value:" + itemValue;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((itemId == null) ? 0 : itemId.hashCode());
+		result = prime * result + ((itemName == null) ? 0 : itemName.hashCode());
+		result = prime * result + ((itemQuantity == null) ? 0 : itemQuantity.hashCode());
+		result = prime * result + ((itemValue == null) ? 0 : itemValue.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Item other = (Item) obj;
+		if (itemId == null) {
+			if (other.itemId != null)
+				return false;
+		} else if (!itemId.equals(other.itemId))
+			return false;
+		if (itemName == null) {
+			if (other.itemName != null)
+				return false;
+		} else if (!itemName.equals(other.itemName))
+			return false;
+		if (itemQuantity == null) {
+			if (other.itemQuantity != null)
+				return false;
+		} else if (!itemQuantity.equals(other.itemQuantity))
+			return false;
+		if (itemValue == null) {
+			if (other.itemValue != null)
+				return false;
+		} else if (!itemValue.equals(other.itemValue))
+			return false;
+		return true;
 	}
 
 }

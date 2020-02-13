@@ -83,4 +83,53 @@ public class Order {
 		this.itemsInOrder = itemsInOrder;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((customerId == null) ? 0 : customerId.hashCode());
+		result = prime * result + ((discount == null) ? 0 : discount.hashCode());
+		result = prime * result + ((itemsInOrder == null) ? 0 : itemsInOrder.hashCode());
+		result = prime * result + ((orderCost == null) ? 0 : orderCost.hashCode());
+		result = prime * result + ((orderId == null) ? 0 : orderId.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Order other = (Order) obj;
+		if (customerId == null) {
+			if (other.customerId != null)
+				return false;
+		} else if (!customerId.equals(other.customerId))
+			return false;
+		if (discount == null) {
+			if (other.discount != null)
+				return false;
+		} else if (!discount.equals(other.discount))
+			return false;
+		if (itemsInOrder == null) {
+			if (other.itemsInOrder != null)
+				return false;
+		} else if (!itemsInOrder.equals(other.itemsInOrder))
+			return false;
+		if (orderCost == null) {
+			if (other.orderCost != null)
+				return false;
+		} else if (!orderCost.equals(other.orderCost))
+			return false;
+		if (orderId == null) {
+			if (other.orderId != null)
+				return false;
+		} else if (!orderId.equals(other.orderId))
+			return false;
+		return true;
+	}
+
 }

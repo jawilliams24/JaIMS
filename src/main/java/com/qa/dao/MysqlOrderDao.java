@@ -141,9 +141,6 @@ public class MysqlOrderDao implements Dao<Order> {
 		try (Connection conn = DriverManager.getConnection(Config.getUrl(), Config.getUsername(), Config.getPassword());
 				Statement statement = conn.createStatement();) {
 			for (Item item : order.getItemsInOrder()) {
-
-//			statement.executeUpdate(String.format("INSERT INTO item_order VALUES(null," + orderId+ ","
-//					+ item.getItemId() + "," + item.getItemValue() + "," + item.getItemQuantity() + ");"));
 				statement.executeUpdate(String.format("INSERT INTO itemorder values(null,'%s','%s','%s','%s');",
 						order.getOrderId(), item.getItemId(), item.getItemQuantity(), item.getItemValue()));
 			}
@@ -259,7 +256,6 @@ public class MysqlOrderDao implements Dao<Order> {
 
 	@Override
 	public Order readSingle(long id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
