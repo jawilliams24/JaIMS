@@ -9,9 +9,6 @@ package com.qa.utils;
  */
 
 public class Config {
-	private Config(String username, String password, String url) {
-
-	}
 
 	private static String username;
 	private static String password;

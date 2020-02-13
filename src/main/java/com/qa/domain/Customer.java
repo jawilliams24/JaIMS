@@ -37,12 +37,12 @@ public class Customer {
 		this.id = id;
 		this.firstName = firstName;
 		this.surname = surname;
-
-		/**
-		 * Getters and Setters for Customer parameters.
-		 * 
-		 */
 	}
+
+	/**
+	 * Getters and Setters for Customer parameters.
+	 * 
+	 */
 
 	public Long getId() {
 		return id;
