@@ -71,18 +71,7 @@ public class OrderController implements CrudController<Order> {
 			if (itemId == 0) {
 				break;
 			}
-			ItemController itemController = new ItemController(itemServices);
-//			try {
-//				Item item = itemController.readSingle(new Item(itemId));
-//				if (item.getItemId()>0) {
-//					LOGGER.info("Please enter how many of this item you want: ");
-//					item.setItemQuantity(Long.parseLong(getInput()));							// Gives NullPointerException
-//					itemsInOrder.add(item);
-//				}
-//			} catch (Exception e) {
-//			LOGGER.debug(e.getStackTrace());
-//			LOGGER.error(e.getMessage());
-		
+			ItemController itemController = new ItemController(itemServices);		
 			Item item = itemController.readSingle(new Item(itemId));
 			LOGGER.info("Please enter how many of this item you want: ");
 			item.setItemQuantity(Long.parseLong(getInput()));
