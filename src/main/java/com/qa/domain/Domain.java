@@ -25,7 +25,7 @@ public enum Domain {
 		this.description = description;
 	}
 
-	public String description() {
+	private String description() {
 		return this.name() + ": " + this.description;
 	}
 
