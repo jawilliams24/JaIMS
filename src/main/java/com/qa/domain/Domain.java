@@ -25,7 +25,7 @@ public enum Domain {
 		this.description = description;
 	}
 
-	public String description() {
+	private String description() {
 		return this.name() + ": " + this.description;
 	}
 
@@ -54,10 +54,6 @@ public enum Domain {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public static Logger getLogger() {
-		return LOGGER;
 	}
 
 }

@@ -14,18 +14,16 @@ import com.qa.domain.Order;
 import com.qa.utils.Config;
 import com.qa.utils.Utilities;
 
-///**
-// * This class is my DAO for the Orders table
-// * @author James Williams
-// *
-// */
+/**
+ * This class is my DAO for the Orders table
+ * @author James Williams
+ *
+ */
 
 public class MysqlOrderDao implements Dao<Order> {
 
 	public static final Logger LOGGER = Logger.getLogger(MysqlOrderDao.class);
-//
-//	private Statement statement = null;
-//	private ResultSet resultSet = null;
+
 
 	/**
 	 * Connects the program to the database.
