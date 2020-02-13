@@ -2705,3 +2705,6 @@ customer_id = 3 first_name = Simon surname = Jones
 2020-02-13 12:10:56 INFO  CustomerController:64 - Please enter the id of the customer you would like to delete
 2020-02-13 12:10:56 INFO  CustomerController:67 - Customer successfully deleted.
 
+2020-02-13 12:14:08 INFO  Ims:37 - What is your username
+2020-02-13 12:14:20 INFO  Ims:37 - What is your username
+2020-02-13 12:15:40 INFO  Ims:37 - What is your username
