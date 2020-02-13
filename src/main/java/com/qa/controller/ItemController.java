@@ -42,7 +42,7 @@ public class ItemController implements CrudController<Item> {
 		LOGGER.info("Please enter a item name");
 		String itemName = getInput();
 		LOGGER.info("Please enter a item value");
-		float itemValue = Float.parseFloat(getInput());
+		Float itemValue = Float.parseFloat(getInput());
 		Item item = itemService.create(new Item(itemName, itemValue));
 		LOGGER.info("Item successfully created.\n");
 		return item;
@@ -54,7 +54,7 @@ public class ItemController implements CrudController<Item> {
 		LOGGER.info("Please enter a item name");
 		String itemName = getInput();
 		LOGGER.info("Please enter a item value");
-		float itemValue = Float.parseFloat(getInput());
+		Float itemValue = Float.parseFloat(getInput());
 		Item item = itemService.update(new Item(itemId, itemName, itemValue));
 		LOGGER.info("Item successfully updated.\n");
 		return item;
