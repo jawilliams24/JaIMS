@@ -33,9 +33,9 @@ public class Ims {
 	public void imsSystem() {
 
 		LOGGER.info("What is your username");
-		Config.username = Utilities.getInput();
+		Config.setUsername(Utilities.getInput());
 		LOGGER.info("What is your password");
-		Config.password = Utilities.getInput();
+		Config.setPassword(Utilities.getInput());
 
 		boolean looper = false;
 		while (!looper) {

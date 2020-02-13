@@ -64,7 +64,7 @@ public class MysqlOrderDao implements Dao<Order> {
 	 */
 
 	public List<Order> readAll() {
-		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+		try (Connection conn = DriverManager.getConnection(Config.getUrl(), Config.getUsername(), Config.getPassword());
 				Statement statement = conn.createStatement();) {
 			resultSet = statement.executeQuery("SELECT * FROM orders");
 
@@ -88,7 +88,7 @@ public class MysqlOrderDao implements Dao<Order> {
 	 */
 
 	public Order readLatest() {
-		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+		try (Connection conn = DriverManager.getConnection(Config.getUrl(), Config.getUsername(), Config.getPassword());
 				Statement statement = conn.createStatement();) {
 			resultSet = statement.executeQuery("SELECT * FROM orders ORDER BY order_id DESC LIMIT 1");
 			resultSet.next();
@@ -111,7 +111,7 @@ public class MysqlOrderDao implements Dao<Order> {
 
 	@SuppressWarnings("finally")
 	public Order create(Order order) {
-		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+		try (Connection conn = DriverManager.getConnection(Config.getUrl(), Config.getUsername(), Config.getPassword());
 				Statement statement = conn.createStatement();) {
 			statement.executeUpdate(
 					"INSERT INTO orders(cost, customer_id, discount) VALUES(" + order.getOrderCost() + ","
@@ -146,7 +146,7 @@ public class MysqlOrderDao implements Dao<Order> {
 	}
 
 	public Order addItemToOrder(Order order) {
-		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+		try (Connection conn = DriverManager.getConnection(Config.getUrl(), Config.getUsername(), Config.getPassword());
 				Statement statement = conn.createStatement();) {
 			for (Item item : order.getItemsInOrder()) {
 
@@ -168,7 +168,7 @@ public class MysqlOrderDao implements Dao<Order> {
 	}
 
 	public Order costCalculator(Order order) {
-		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+		try (Connection conn = DriverManager.getConnection(Config.getUrl(), Config.getUsername(), Config.getPassword());
 				Statement statement = conn.createStatement();) {
 			resultSet = statement.executeQuery(String.format(
 					"SELECT SUM(quantity * sold_cost) FROM itemorder WHERE order_id =" + order.getOrderId() + ";"));
@@ -188,7 +188,7 @@ public class MysqlOrderDao implements Dao<Order> {
 	}
 
 	public Order updateCost(Order order) {
-		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password)) {
+		try (Connection conn = DriverManager.getConnection(Config.getUrl(), Config.getUsername(), Config.getPassword())) {
 			Order orderCost = costCalculator(order);
 			if (orderCost.getOrderCost() >= 10000) {
 
@@ -220,7 +220,7 @@ public class MysqlOrderDao implements Dao<Order> {
 	 */
 
 	public Order readOrder(Long orderId) {
-		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+		try (Connection conn = DriverManager.getConnection(Config.getUrl(), Config.getUsername(), Config.getPassword());
 				Statement statement = conn.createStatement();) {
 			resultSet = statement.executeQuery("SELECT * FROM orders WHERE order_id = " + orderId);
 			resultSet.next();
@@ -243,7 +243,7 @@ public class MysqlOrderDao implements Dao<Order> {
 
 	public Order update(Order order) {
 
-		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+		try (Connection conn = DriverManager.getConnection(Config.getUrl(), Config.getUsername(), Config.getPassword());
 				Statement statement = conn.createStatement();) {
 			Item item = order.getItemsInOrder().get(0);
 			statement.executeUpdate(
@@ -280,7 +280,7 @@ public class MysqlOrderDao implements Dao<Order> {
 	 */
 
 	public void delete(long orderId) {
-		try (Connection conn = DriverManager.getConnection(Config.url, Config.username, Config.password);
+		try (Connection conn = DriverManager.getConnection(Config.getUrl(), Config.getUsername(), Config.getPassword());
 				Statement statement = conn.createStatement();) {
 			statement.executeUpdate("DELETE FROM orders WHERE order_id = " + orderId);
 		} catch (Exception e) {
