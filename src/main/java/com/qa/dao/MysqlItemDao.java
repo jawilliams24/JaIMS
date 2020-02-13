@@ -10,7 +10,6 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import com.qa.domain.Item;
 import com.qa.utils.Config;
-import com.qa.utils.Utilities;
 
 ///**
 // * This class is my DAO for the Items table

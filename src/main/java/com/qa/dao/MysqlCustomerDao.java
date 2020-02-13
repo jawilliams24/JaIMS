@@ -63,7 +63,7 @@ public class MysqlCustomerDao implements Dao<Customer> {
 				ResultSet resultSet = statement.executeQuery("SELECT * FROM customers");) {
 
 			Utilities util = new Utilities();
-			String customerResults = util.resultSet_toString(resultSet);
+			String customerResults = util.resultSetToString(resultSet);
 			LOGGER.info(customerResults);
 
 		} catch (Exception e) {

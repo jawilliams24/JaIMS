@@ -64,7 +64,7 @@ public class MysqlOrderDao implements Dao<Order> {
 				ResultSet resultSet = statement.executeQuery("SELECT * FROM orders");) {
 
 			Utilities util = new Utilities();
-			String orderResults = util.resultSet_toString(resultSet);
+			String orderResults = util.resultSetToString(resultSet);
 			LOGGER.info(orderResults);
 
 		} catch (Exception e) {
