@@ -48,5 +48,17 @@ public enum Domain {
 		}
 		return domain;
 	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public static Logger getLogger() {
+		return LOGGER;
+	}
 	
 }

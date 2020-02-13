@@ -14,7 +14,7 @@ public interface CrudServices<T> {
 
     public List<T> readAll();
     
-    T readSingle(T t);
+    T readSingle(long t);
      
     T create(T t);
      

@@ -69,9 +69,8 @@ public class ItemController implements CrudController<Item>{
 	}
 
 	@Override
-	public Item readSingle(Item item) {
-
-		return itemService.readSingle(new Item(item.getItemId()));
+	public Item readSingle(long item) {
+		return itemService.readSingle(item);
 	}
 	
 }

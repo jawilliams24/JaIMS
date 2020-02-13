@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -35,13 +36,19 @@ public class CustomerControllerTest {
 	@InjectMocks
 	private CustomerController customerController;
 
+//	@Before
+//	public void setUp() {
+//		customer = new Customer(1L, "Chris", "Perrins");
+//		other = new Customer(1L, "Chris", "Perrins");
+//	}
+	
 	@Test
 	public void createTest() {
-		String firstName = "John";
-		String surname = "Smith";
-		Customer customer = new Customer(firstName, surname);
+		String firstName = "Chris";
+		String surname = "Perrins";
 		Mockito.doReturn(firstName, surname).when(customerController).getInput();
-		Customer savedCustomer = new Customer(1L, "John", "Smith");
+		Customer customer = new Customer(firstName, surname);
+		Customer savedCustomer = new Customer(1L, "Chris", "Perrins");
 		Mockito.when(customerServices.create(customer)).thenReturn(savedCustomer);
 		assertEquals(savedCustomer, customerController.create());
 	}
@@ -66,13 +73,12 @@ public class CustomerControllerTest {
 	@Test
 	public void updateTest() {
 		String id = "1";
-		String firstName = "Alex";
-		String surname = "Brown";
-		Customer customer = new Customer(1L, firstName, surname);
+		String firstName = "Rhys";
+		String surname = "Thompson";
 		Mockito.doReturn(id, firstName, surname).when(customerController).getInput();
-		Customer returnedCustomer = new Customer(1L, firstName, surname);
-		Mockito.when(customerServices.update(customer)).thenReturn(returnedCustomer);
-		assertEquals(returnedCustomer, customerController.update());
+		Customer customer = new Customer(1L, firstName, surname);
+		Mockito.when(customerServices.update(customer)).thenReturn(customer);
+		assertEquals(customer, customerController.update());
 	}
 
 	/**

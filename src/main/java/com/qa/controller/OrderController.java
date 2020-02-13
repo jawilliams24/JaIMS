@@ -72,9 +72,10 @@ public class OrderController implements CrudController<Order> {
 				break;
 			}
 			ItemController itemController = new ItemController(itemServices);		
-			Item item = itemController.readSingle(new Item(itemId));
+			Item item = itemController.readSingle(itemId);
 			LOGGER.info("Please enter how many of this item you want: ");
-			item.setItemQuantity(Long.parseLong(getInput()));
+			Long thing = Long.parseLong(getInput());
+			item.setItemQuantity(thing);
 			itemsInOrder.add(item);
 
 		}
@@ -83,16 +84,17 @@ public class OrderController implements CrudController<Order> {
 
 	}
 
-	public Order update() {
-		LOGGER.info("Please enter the id of the order you would like to update: ");
-		Long orderId = Long.valueOf(getInput());
-		LOGGER.info("Please enter the id of the item you would like to update: ");
-		Long itemId = Long.parseLong(getInput());
-		LOGGER.info("Please enter the new item quantity;");
-		Long itemQuantity = Long.parseLong(getInput());
-		Order order = orderService.update(new Order(orderId, itemId, itemQuantity));
-		LOGGER.info("Order successfully updated.\n");
-		return order;
+	public Order update(Order order) {
+		return orderService.update(order);
+//		LOGGER.info("Please enter the id of the order you would like to update: ");
+//		Long orderId = Long.valueOf(getInput());
+//		LOGGER.info("Please enter the id of the item you would like to update: ");
+//		Long itemId = Long.parseLong(getInput());
+//		LOGGER.info("Please enter the new item quantity;");
+//		Long itemQuantity = Long.parseLong(getInput());
+//		Order order = orderService.update(new Order(orderId, itemId, itemQuantity));
+//		LOGGER.info("Order successfully updated.\n");
+//		return order;
 	}
 
 	public void delete() {
@@ -103,7 +105,13 @@ public class OrderController implements CrudController<Order> {
 	}
 
 	@Override
-	public Order readSingle(Order t) {
+	public Order readSingle(long t) {
+		return null;
+	}
+
+	@Override
+	public Order update() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

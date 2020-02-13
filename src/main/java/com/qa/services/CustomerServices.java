@@ -41,7 +41,7 @@ public class CustomerServices implements CrudServices<Customer> {
 	}
 
 	@Override
-	public Customer readSingle(Customer customer) {
+	public Customer readSingle(long customer) {
 		return customerDao.readSingle(customer);
 	}
 

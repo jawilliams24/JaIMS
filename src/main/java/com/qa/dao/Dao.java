@@ -15,7 +15,7 @@ public interface Dao<T> {
 	
 	public List<T> readAll();
 	
-	public T readSingle(T t);
+	public T readSingle(long id);
 	
 	public T update(T t);
 	
