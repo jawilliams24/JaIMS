@@ -122,12 +122,11 @@ public class MysqlOrderDao implements Dao<Order> {
 			statement = conn.createStatement();
 			statement.executeUpdate("INSERT INTO orders(customer_id, cost, discount) VALUES(null,'" + order.getCustomerId()
 									+ order.getOrderCost() + "," + order.getDiscount() + ");", statement.RETURN_GENERATED_KEYS);
-			ResultSet resultSet = statement.getGeneratedKeys();
+			resultSet = statement.getGeneratedKeys();
 			resultSet.next();
 			Long orderId = (long) resultSet.getInt(1);
 			for (Item item : order.getItemsInOrder()) {
 				addItemToOrder(orderId, item);
-				break;
 			}
 			return readLatest();
 		} catch (Exception e) {

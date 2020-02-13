@@ -26,7 +26,7 @@ public class CustomerController implements CrudController<Customer> {
 		this.customerService = customerService;
 	}
 
-	String getInput() {
+	public String getInput() {
 		return Utilities.getInput();
 	}
 
