@@ -102,6 +102,15 @@ This will then deploy the new .jar file to your specified Nexus repository, whic
 
 All the tests used in this project are included in the source folder and you will have to tell the project to run as a JUnit test to run them in your IDE.
 
+### Unit Tests
+
+Unit tests are performed on methods that don't need to call other methods or functions, and as such, they can all be tested independently of each other.
+Running the command shown below should run all unit tests to check the test coverage on these. All written tests passed as of the latest version.
+
+```
+mvn test
+```
+
 ## Built With
 
 * [Maven](https://maven.apache.org/) - Dependency Management
@@ -120,6 +129,18 @@ James.Williams@academytrainee.com
 * 1.0.0
 * Initial Release
 
+## License
+
+MIT License
+
+Copyright (c) [2020] [James Williams]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 ## Acknowledgments
 
-I must extend my gratitude to several contributors to this project. Firstly to Chris Perrins and Rhys Thompson, as well as all the other trainers at QA Consulting, who have been absolutely invaluable with their endless assistance and patience. Also I must tip my hat to Tyler Eddy, Juamal Blackman, Charlie Reddin and Sam White, who have also been incredibly helpful and informative with their knowledge and support.
+I must extend my gratitude to several contributors to this project. Firstly to Chris Perrins and Rhys Thompson, as well as all the other trainers at QA Consulting, who have been absolutely invaluable with their endless assistance and patience. Also I must tip my hat to Tyler Eddy, Juamal Blackman, Charlie Reddin, Sam White and Elliot Dorrington who have also been incredibly helpful and informative with their knowledge and support.
