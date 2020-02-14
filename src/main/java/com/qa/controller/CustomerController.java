@@ -8,23 +8,31 @@ import com.qa.domain.Customer;
 import com.qa.services.CrudServices;
 import com.qa.utils.Utilities;
 
-public class CustomerController implements CrudController<Customer>{
+/**
+ * This class interacts with the user to give them instructions and then feeds
+ * back to them once they have completed their actions.
+ * 
+ * @author James Williams
+ *
+ */
+
+public class CustomerController implements CrudController<Customer> {
 
 	public static final Logger LOGGER = Logger.getLogger(CustomerController.class);
-	
+
 	private CrudServices<Customer> customerService;
-	
+
 	public CustomerController(CrudServices<Customer> customerService) {
 		this.customerService = customerService;
 	}
-	
-	String getInput() {
+
+	public String getInput() {
 		return Utilities.getInput();
 	}
-	
+
 	public List<Customer> readAll() {
 		List<Customer> customers = customerService.readAll();
-		for(Customer customer: customers) {
+		for (Customer customer : customers) {
 			LOGGER.info(customer.toString());
 		}
 		return customers;
@@ -36,7 +44,7 @@ public class CustomerController implements CrudController<Customer>{
 		LOGGER.info("Please enter a surname");
 		String surname = getInput();
 		Customer customer = customerService.create(new Customer(firstName, surname));
-		LOGGER.info("Customer created");
+		LOGGER.info("Customer successfully created.\n");
 		return customer;
 	}
 
@@ -48,7 +56,7 @@ public class CustomerController implements CrudController<Customer>{
 		LOGGER.info("Please enter a surname");
 		String surname = getInput();
 		Customer customer = customerService.update(new Customer(id, firstName, surname));
-		LOGGER.info("Customer updated");
+		LOGGER.info("Customer successfully updated.\n");
 		return customer;
 	}
 
@@ -56,6 +64,12 @@ public class CustomerController implements CrudController<Customer>{
 		LOGGER.info("Please enter the id of the customer you would like to delete");
 		Long id = Long.valueOf(getInput());
 		customerService.delete(id);
+		LOGGER.info("Customer successfully deleted.\n");
 	}
-	
+
+	@Override
+	public Customer readSingle(long t) {
+		return null;
+	}
+
 }

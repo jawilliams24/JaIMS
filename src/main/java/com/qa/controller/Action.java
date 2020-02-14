@@ -5,9 +5,9 @@ import org.apache.log4j.Logger;
 import com.qa.utils.Utilities;
 
 /**
- * This is my Enum for Action. Basically what this does is sets out the five different
- * actions that users can perform on my IMS, then tells the system to run methods
- * depending on what the user chooses to do.
+ * This is my Enum for Action. Basically what this does is sets out the five
+ * different actions that users can perform on my IMS, then tells the system to
+ * run methods depending on what the user chooses to do.
  * 
  * @author James Williams
  *
@@ -36,6 +36,13 @@ public enum Action {
 			LOGGER.info(action.description());
 		}
 	}
+
+	/**
+	 * This enum runs the getAction method to allow the user to choose which action
+	 * they want to take.
+	 * 
+	 * @return
+	 */
 
 	public static Action getAction() {
 		Action action;
